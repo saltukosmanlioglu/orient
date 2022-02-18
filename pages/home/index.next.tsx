@@ -2,7 +2,7 @@ import { NextPage } from 'next'
 
 const Home: NextPage = () => {
   return (
-    <div>as</div>
+    <div>Orient</div>
   )
 }
 
