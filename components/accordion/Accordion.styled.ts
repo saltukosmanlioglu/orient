@@ -14,7 +14,7 @@ export const Header = styled.div<{ color: string; }>`
 
   p {
     margin-left: 12px;
-    color: ${({ color }) => `3px solid ${color}`};
+    color: ${({ color }) => color};
   }
 `
 
