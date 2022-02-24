@@ -1,15 +1,17 @@
+import React from 'react'
 import { NextPage } from 'next'
 
 import Accordion from '@/components/accordion'
+import Main from '@/layout/main'
 
 const Home: NextPage = () => {
   return (
-    <div>
-      <h1>Orient</h1>
+    <Main title="Orient by G.K.">
+      {/* <h1>Orient</h1>
       <Accordion title="Kategori 1">
 
-      </Accordion>
-    </div>
+      </Accordion> */}
+    </Main>
   )
 }
 
