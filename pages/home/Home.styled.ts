@@ -1,3 +1,7 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
-export const sa = styled.div``
+export const Gutter = styled.section`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+`
