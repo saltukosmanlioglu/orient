@@ -6,11 +6,11 @@ import Main from '@/layout/main'
 const Detail: React.FunctionComponent = () => {
   const router = useRouter()
   
-  const { food } = router.query
+  const { product } = router.query
 
   return (
     <Main title="Orient by G.K.">
-      {food}
+      {product}
     </Main>
   )
 }
