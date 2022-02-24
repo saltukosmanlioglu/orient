@@ -20,8 +20,8 @@ const Main: React.FunctionComponent<MainProps> = ({
       <section style={{ height: 1000 }}>
         {children}
       </section>
-      <ScrollUp />
       <Footer />
+      <ScrollUp />
     </React.Fragment>
   )
 }

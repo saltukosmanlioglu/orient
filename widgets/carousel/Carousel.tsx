@@ -14,6 +14,7 @@ const Carousel: React.FunctionComponent<CarouselProps> = () => {
         showArrows={false}
         showStatus={false}
         showThumbs={false}
+        stopOnHover
         swipeable
       >
         <div>

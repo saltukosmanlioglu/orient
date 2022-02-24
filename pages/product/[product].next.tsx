@@ -11,7 +11,6 @@ const Detail: React.FunctionComponent = () => {
 
   return (
     <Main title="Orient by G.K.">
-      <Image src="/" alt="" />
       {product}
     </Main>
   )
