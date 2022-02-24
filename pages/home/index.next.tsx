@@ -13,9 +13,9 @@ const Home: NextPage = () => {
       <Styled.Gutter>
         <Accordion color="grey" title="SABAH">
           <Styled.Gutter>
-            <Product productName="KAHVALTI TABAĞI" href="/food/kahvalti-tabagi" price="85" />
-            <Product productName="FIT BRUNCH" href="/food/fit-brunch" price="98" />
-            <Product productName="COLDPRESS JUICE COLLECTION" href="/food/coldpress-juice-collection" price="117" />
+            <Product productName="KAHVALTI TABAĞI" href="/product/kahvalti-tabagi" price="85" />
+            <Product productName="FIT BRUNCH" href="/product/fit-brunch" price="98" />
+            <Product productName="COLDPRESS JUICE COLLECTION" href="/product/coldpress-juice-collection" price="117" />
           </Styled.Gutter>
         </Accordion>
         <Accordion color="grey" title="SALATA"></Accordion>
