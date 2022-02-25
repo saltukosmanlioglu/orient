@@ -2,9 +2,6 @@ import React from 'react'
 import Head from 'next/head'
 import type { AppProps } from 'next/app'
 
-import 'slick-carousel/slick/slick.css'
-import 'slick-carousel/slick/slick-theme.css'
-
 import 'react-responsive-carousel/lib/styles/carousel.min.css'
 
 import GlobalStyles from '@/app/global/Global.styled'

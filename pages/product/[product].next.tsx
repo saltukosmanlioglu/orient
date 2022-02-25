@@ -1,7 +1,7 @@
 import React from 'react'
 import { useRouter } from 'next/router'
-import Image from 'next/image'
 
+import Canvas from '@/components/canvas'
 import Main from '@/layout/main'
 
 const Detail: React.FunctionComponent = () => {
@@ -11,7 +11,9 @@ const Detail: React.FunctionComponent = () => {
 
   return (
     <Main title="Orient by G.K.">
-      {product}
+      <div style={{ padding: 12 }}>
+        <Canvas />
+      </div>
     </Main>
   )
 }
