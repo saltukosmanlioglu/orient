@@ -5,13 +5,14 @@ import { ProductProps } from './types'
 import * as Styled from './Product.styled'
 
 const Product: React.FunctionComponent<ProductProps> = ({
+  color,
   href,
   price,
   productName
 }) => {
   return (
     <Link href={href}>
-      <Styled.Product>
+      <Styled.Product color={color}>
         <Styled.ProductName style={{ width: '80%' }}>
           <p>{productName}</p>
         </Styled.ProductName>

@@ -17,9 +17,10 @@ const Main: React.FunctionComponent<MainProps> = ({
         <title>{title}</title>
       </Head>
       <Header />
-      <section>
+      <section style={{ marginBottom: 40 }}>
         {children}
       </section>
+      <Footer />
       <ScrollUp />
     </React.Fragment>
   )

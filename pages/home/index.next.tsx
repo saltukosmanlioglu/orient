@@ -17,58 +17,58 @@ const Home: NextPage = () => {
       <Styled.Gutter>
         <Accordion color="#465956" title="Sabah">
           <Styled.Gutter>
-            <Product productName="KAHVALTI TABAĞI" href="/product/kahvalti-tabagi" price="85" />
-            <Product productName="FIT BRUNCH" href="/product/fit-brunch" price="98" />
-            <Product productName="COLDPRESS JUICE COLLECTION" href="/product/coldpress-juice-collection" price="117" />
+            <Product color="#465956" productName="KAHVALTI TABAĞI" href="/product/kahvalti-tabagi" price="85" />
+            <Product color="#465956" productName="FIT BRUNCH" href="/product/fit-brunch" price="98" />
+            <Product color="#465956" productName="COLDPRESS JUICE COLLECTION" href="/product/coldpress-juice-collection" price="117" />
           </Styled.Gutter>
         </Accordion>
         <Accordion color="#465956" title="Salata">
           <Styled.Gutter>
-            <Product productName="KAHVALTI TABAĞI" href="/product/kahvalti-tabagi" price="85" />
-            <Product productName="FIT BRUNCH" href="/product/fit-brunch" price="98" />
-            <Product productName="COLDPRESS JUICE COLLECTION" href="/product/coldpress-juice-collection" price="117" />
+            <Product color="#465956" productName="KAHVALTI TABAĞI" href="/product/kahvalti-tabagi" price="85" />
+            <Product color="#465956" productName="FIT BRUNCH" href="/product/fit-brunch" price="98" />
+            <Product color="#465956" productName="COLDPRESS JUICE COLLECTION" href="/product/coldpress-juice-collection" price="117" />
           </Styled.Gutter>
         </Accordion>
         <Accordion color="#465956" title="Sushi">
           <Styled.Gutter>
-            <Product productName="KAHVALTI TABAĞI" href="/product/kahvalti-tabagi" price="85" />
-            <Product productName="FIT BRUNCH" href="/product/fit-brunch" price="98" />
-            <Product productName="COLDPRESS JUICE COLLECTION" href="/product/coldpress-juice-collection" price="117" />
+            <Product color="#465956" productName="KAHVALTI TABAĞI" href="/product/kahvalti-tabagi" price="85" />
+            <Product color="#465956" productName="FIT BRUNCH" href="/product/fit-brunch" price="98" />
+            <Product color="#465956" productName="COLDPRESS JUICE COLLECTION" href="/product/coldpress-juice-collection" price="117" />
           </Styled.Gutter>
         </Accordion>
         <Accordion color="#a29d2f" title="Soft İçecekler">
           <Styled.Gutter>
-            <Product productName="KAHVALTI TABAĞI" href="/product/kahvalti-tabagi" price="85" />
-            <Product productName="FIT BRUNCH" href="/product/fit-brunch" price="98" />
-            <Product productName="COLDPRESS JUICE COLLECTION" href="/product/coldpress-juice-collection" price="117" />
+            <Product color="#a29d2f" productName="KAHVALTI TABAĞI" href="/product/kahvalti-tabagi" price="85" />
+            <Product color="#a29d2f" productName="FIT BRUNCH" href="/product/fit-brunch" price="98" />
+            <Product color="#a29d2f" productName="COLDPRESS JUICE COLLECTION" href="/product/coldpress-juice-collection" price="117" />
           </Styled.Gutter>
         </Accordion>
         <Accordion color="#a29d2f" title="Taze İçecekler">
           <Styled.Gutter>
-            <Product productName="KAHVALTI TABAĞI" href="/product/kahvalti-tabagi" price="85" />
-            <Product productName="FIT BRUNCH" href="/product/fit-brunch" price="98" />
-            <Product productName="COLDPRESS JUICE COLLECTION" href="/product/coldpress-juice-collection" price="117" />
+            <Product color="#a29d2f" productName="KAHVALTI TABAĞI" href="/product/kahvalti-tabagi" price="85" />
+            <Product color="#a29d2f" productName="FIT BRUNCH" href="/product/fit-brunch" price="98" />
+            <Product color="#a29d2f" productName="COLDPRESS JUICE COLLECTION" href="/product/coldpress-juice-collection" price="117" />
           </Styled.Gutter>
         </Accordion>
         <Accordion color="#d15335" title="Kokteyller">
           <Styled.Gutter>
-            <Product productName="KAHVALTI TABAĞI" href="/product/kahvalti-tabagi" price="85" />
-            <Product productName="FIT BRUNCH" href="/product/fit-brunch" price="98" />
-            <Product productName="COLDPRESS JUICE COLLECTION" href="/product/coldpress-juice-collection" price="117" />
+            <Product color="#d15335" productName="KAHVALTI TABAĞI" href="/product/kahvalti-tabagi" price="85" />
+            <Product color="#d15335" productName="FIT BRUNCH" href="/product/fit-brunch" price="98" />
+            <Product color="#d15335" productName="COLDPRESS JUICE COLLECTION" href="/product/coldpress-juice-collection" price="117" />
           </Styled.Gutter>
         </Accordion>
         <Accordion color="#d15335" title="Vermut">
           <Styled.Gutter>
-            <Product productName="KAHVALTI TABAĞI" href="/product/kahvalti-tabagi" price="85" />
-            <Product productName="FIT BRUNCH" href="/product/fit-brunch" price="98" />
-            <Product productName="COLDPRESS JUICE COLLECTION" href="/product/coldpress-juice-collection" price="117" />
+            <Product color="#d15335" productName="KAHVALTI TABAĞI" href="/product/kahvalti-tabagi" price="85" />
+            <Product color="#d15335" productName="FIT BRUNCH" href="/product/fit-brunch" price="98" />
+            <Product color="#d15335" productName="COLDPRESS JUICE COLLECTION" href="/product/coldpress-juice-collection" price="117" />
           </Styled.Gutter>
         </Accordion>
         <Accordion color="#998575" title="Nargile">
           <Styled.Gutter>
-            <Product productName="KAHVALTI TABAĞI" href="/product/kahvalti-tabagi" price="85" />
-            <Product productName="FIT BRUNCH" href="/product/fit-brunch" price="98" />
-            <Product productName="COLDPRESS JUICE COLLECTION" href="/product/coldpress-juice-collection" price="117" />
+            <Product color="#998575" productName="KAHVALTI TABAĞI" href="/product/kahvalti-tabagi" price="85" />
+            <Product color="#998575" productName="FIT BRUNCH" href="/product/fit-brunch" price="98" />
+            <Product color="#998575" productName="COLDPRESS JUICE COLLECTION" href="/product/coldpress-juice-collection" price="117" />
           </Styled.Gutter>
         </Accordion>
       </Styled.Gutter>

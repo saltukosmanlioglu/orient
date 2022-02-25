@@ -1,17 +1,18 @@
 import styled from 'styled-components'
 
-export const Product = styled.a`
+export const Product = styled.a<{ color: string }>`
   width: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
   padding: 12px;
-  border-bottom: 1px solid grey;
-  border-right: 1px solid grey;
+  border-bottom: 1px solid ${({ color }) => color};
+  border-right: 1px solid ${({ color }) => color};
 
   p {
     font-size: 13px;
+    color: ${({ color }) => color}
   }
 `
 
