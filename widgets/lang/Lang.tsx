@@ -11,9 +11,9 @@ const Lang: React.FunctionComponent = () => {
   useEffect(() => {
     if (localStorage.getItem('lang')) {
       if (localStorage.getItem('lang') === 'TR') {
-        setLang('TR')
-      } else {
         setLang('EN')
+      } else {
+        setLang('TR')
       }
     } else {
       localStorage.setItem('lang', 'TR')

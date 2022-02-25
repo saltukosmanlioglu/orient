@@ -8,7 +8,7 @@ const ScrollUp: React.FunctionComponent = () => {
   const [visible, setVisible] = useState<boolean>(false)
 
   const handleClick = () => {
-    window.scrollTo({
+    window.scroll({
       behavior: 'smooth',
       top: 0
     })
