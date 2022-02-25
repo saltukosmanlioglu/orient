@@ -44,4 +44,5 @@ export const LangButton = styled.button`
   width: calc(100% + 1px);
   padding: 4px;
   height: 100%;
+  color: #000;
 `
