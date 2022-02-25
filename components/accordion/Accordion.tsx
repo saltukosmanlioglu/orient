@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import HipchatChevronDownIcon from '@atlaskit/icon/glyph/hipchat/chevron-down'
 
 import * as Styled from './Accordion.styled'
 import { AccordionProps } from './types'
@@ -17,14 +18,9 @@ const Accordion: React.FunctionComponent<AccordionProps> = ({
   return (
     <Styled.Accordion color={color} onClick={handleClick}>
       <Styled.Header color={color}>
-        <Styled.Arrow
-          alt="Accordion arrow"
-          className="arrow"
-          height={20}
-          isActive={isActive}
-          src="/favicon.ico"
-          width={20}
-        />
+        <Styled.Arrow isActive={isActive}>
+          <HipchatChevronDownIcon label="chevron-down" primaryColor={color} size="medium" />
+        </Styled.Arrow>
         <p>{title}</p>
       </Styled.Header>
       {isActive && (

@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import styled from 'styled-components'
 
 export const Accordion = styled.button<{ color: string }>`
@@ -13,15 +12,15 @@ export const Header = styled.div<{ color: string; }>`
   border-bottom: ${({ color }) => `3px solid ${color}`};
 
   p {
-    margin-left: 12px;
+    margin-left: 4px;
     color: ${({ color }) => color};
     font-size: 16px;
   }
 `
 
-export const Arrow = styled(Image) <{ isActive: boolean; }>`
+export const Arrow = styled.div<{ isActive: boolean; }>`
   transition: .3s all;
-  transform: ${({ isActive }) => isActive ? 'rotate(180deg)' : 'rotate(0deg)'};
+  transform: ${({ isActive }) => isActive ? 'rotate(540deg)' : 'rotate(0deg)'};
 `
 
 export const Detail = styled.div`

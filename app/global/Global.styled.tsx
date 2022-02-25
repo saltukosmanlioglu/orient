@@ -2,7 +2,7 @@ import { createGlobalStyle } from 'styled-components'
 
 const GlobalStyle = createGlobalStyle`
   @font-face {
-    font-family: myFirstFont;
+    font-family: trajan;
     src: url(/font/TrajanTRUBold.ttf);
   }
 
@@ -10,7 +10,7 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: myFirstFont;
+    font-family: trajan;
   }
 
   a {
