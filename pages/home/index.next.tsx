@@ -5,7 +5,7 @@ import Accordion from '@/components/accordion'
 import Product from '@/components/product'
 import Main from '@/layout/main'
 import Carousel from '@/widgets/carousel'
-import Links from '@/widgets/links'
+import Lang from '@/widgets/lang'
 
 import * as Styled from './Home.styled'
 
@@ -13,7 +13,7 @@ const Home: NextPage = () => {
   return (
     <Main title="Orient by G.K.">
       <Carousel />
-      <Links />
+      <Lang />
       <Styled.Gutter>
         <Accordion color="#465956" title="Sabah">
           <Styled.Gutter>
