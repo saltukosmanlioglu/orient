@@ -6,7 +6,7 @@ import { CarouselProps } from './types'
 
 const Carousel: React.FunctionComponent<CarouselProps> = () => {
   return (
-    <div className="carousel-wrapper">
+    <div className="carousel-wrapper" style={{ position: 'relative' }}>
       <Banner
         autoPlay
         infiniteLoop
@@ -19,7 +19,7 @@ const Carousel: React.FunctionComponent<CarouselProps> = () => {
       >
         <div>
           <img height="100%" width="100%" src="https://www.klasiksanatlar.com/img/sayfalar/b/1_1598452306_resim.png" />
-        </div> 
+        </div>
         <div>
           <img height="100%" width="100%" src="https://www.klasiksanatlar.com/img/sayfalar/b/1_1598452306_resim.png" />
         </div>
@@ -27,7 +27,8 @@ const Carousel: React.FunctionComponent<CarouselProps> = () => {
           <img height="100%" width="100%" src="https://www.klasiksanatlar.com/img/sayfalar/b/1_1598452306_resim.png" />
         </div>
       </Banner>
-    </div >
+      <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, zIndex: 10, height: 2, backgroundColor: '#3d5955' }} />
+    </div>
   )
 }
 

@@ -12,7 +12,7 @@ export const Detail = styled.div`
   justify-content: space-between;
 `
 
-export const SocialMedia = styled.div`
+export const Lang = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 0px 8px;

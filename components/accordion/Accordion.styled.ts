@@ -15,6 +15,7 @@ export const Header = styled.div<{ color: string; }>`
   p {
     margin-left: 12px;
     color: ${({ color }) => color};
+    font-size: 16px;
   }
 `
 
