@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
+import HipchatChevronUpIcon from '@atlaskit/icon/glyph/hipchat/chevron-up'
 
 import * as Styled from './ScrollUp.styled'
 
@@ -25,7 +26,7 @@ const ScrollUp: React.FunctionComponent = () => {
 
   return visible ? (
     <Styled.ScrollUp onClick={handleClick}>
-      <Image src="/favicon.ico" alt="Scroll Up" width={30} height={30} />
+      <HipchatChevronUpIcon label="chevron-down" primaryColor="#2f5143" size="xlarge" />
     </Styled.ScrollUp>
   ) : null
 }

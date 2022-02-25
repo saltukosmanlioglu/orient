@@ -22,13 +22,55 @@ const Home: NextPage = () => {
             <Product productName="COLDPRESS JUICE COLLECTION" href="/product/coldpress-juice-collection" price="117" />
           </Styled.Gutter>
         </Accordion>
-        <Accordion color="#465956" title="Salata"></Accordion>
-        <Accordion color="#465956" title="Sushi"></Accordion>
-        <Accordion color="#a29d2f" title="Soft İçecekler"></Accordion>
-        <Accordion color="#a29d2f" title="Taze İçecekler"></Accordion>
-        <Accordion color="#d15335" title="Kokteyller"></Accordion>
-        <Accordion color="#d15335" title="Vermut"></Accordion>
-        <Accordion color="#998575" title="Nargile"></Accordion>
+        <Accordion color="#465956" title="Salata">
+          <Styled.Gutter>
+            <Product productName="KAHVALTI TABAĞI" href="/product/kahvalti-tabagi" price="85" />
+            <Product productName="FIT BRUNCH" href="/product/fit-brunch" price="98" />
+            <Product productName="COLDPRESS JUICE COLLECTION" href="/product/coldpress-juice-collection" price="117" />
+          </Styled.Gutter>
+        </Accordion>
+        <Accordion color="#465956" title="Sushi">
+          <Styled.Gutter>
+            <Product productName="KAHVALTI TABAĞI" href="/product/kahvalti-tabagi" price="85" />
+            <Product productName="FIT BRUNCH" href="/product/fit-brunch" price="98" />
+            <Product productName="COLDPRESS JUICE COLLECTION" href="/product/coldpress-juice-collection" price="117" />
+          </Styled.Gutter>
+        </Accordion>
+        <Accordion color="#a29d2f" title="Soft İçecekler">
+          <Styled.Gutter>
+            <Product productName="KAHVALTI TABAĞI" href="/product/kahvalti-tabagi" price="85" />
+            <Product productName="FIT BRUNCH" href="/product/fit-brunch" price="98" />
+            <Product productName="COLDPRESS JUICE COLLECTION" href="/product/coldpress-juice-collection" price="117" />
+          </Styled.Gutter>
+        </Accordion>
+        <Accordion color="#a29d2f" title="Taze İçecekler">
+          <Styled.Gutter>
+            <Product productName="KAHVALTI TABAĞI" href="/product/kahvalti-tabagi" price="85" />
+            <Product productName="FIT BRUNCH" href="/product/fit-brunch" price="98" />
+            <Product productName="COLDPRESS JUICE COLLECTION" href="/product/coldpress-juice-collection" price="117" />
+          </Styled.Gutter>
+        </Accordion>
+        <Accordion color="#d15335" title="Kokteyller">
+          <Styled.Gutter>
+            <Product productName="KAHVALTI TABAĞI" href="/product/kahvalti-tabagi" price="85" />
+            <Product productName="FIT BRUNCH" href="/product/fit-brunch" price="98" />
+            <Product productName="COLDPRESS JUICE COLLECTION" href="/product/coldpress-juice-collection" price="117" />
+          </Styled.Gutter>
+        </Accordion>
+        <Accordion color="#d15335" title="Vermut">
+          <Styled.Gutter>
+            <Product productName="KAHVALTI TABAĞI" href="/product/kahvalti-tabagi" price="85" />
+            <Product productName="FIT BRUNCH" href="/product/fit-brunch" price="98" />
+            <Product productName="COLDPRESS JUICE COLLECTION" href="/product/coldpress-juice-collection" price="117" />
+          </Styled.Gutter>
+        </Accordion>
+        <Accordion color="#998575" title="Nargile">
+          <Styled.Gutter>
+            <Product productName="KAHVALTI TABAĞI" href="/product/kahvalti-tabagi" price="85" />
+            <Product productName="FIT BRUNCH" href="/product/fit-brunch" price="98" />
+            <Product productName="COLDPRESS JUICE COLLECTION" href="/product/coldpress-juice-collection" price="117" />
+          </Styled.Gutter>
+        </Accordion>
       </Styled.Gutter>
     </Main>
   )
