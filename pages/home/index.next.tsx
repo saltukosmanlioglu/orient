@@ -1,8 +1,7 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { NextPage } from 'next'
 
 import Accordion from '@/components/accordion'
-import Loader from '@/components/loader'
 import Product from '@/components/product'
 import ScrollUp from '@/components/scroll-up'
 import Main from '@/layout/main'
@@ -18,7 +17,7 @@ const Home: NextPage = () => {
   const [categories, setCategories] = useState<CategoriesResponse>()
 
   const getCategories = useCallback(() => {
-    fetch(`${process.env.NEXT_APP_API}categories?lang=${localStorage.getItem('lang')}`, {
+    fetch(`${process.env.NEXT_APP_API}categories?lang=${'EN'}`, {
       method: 'GET',
     })
       .then(response => response.json())
@@ -227,7 +226,6 @@ const Home: NextPage = () => {
         ])
       })
       .catch((error) => {
-        console.log(error)
         setCategories([
           {
             "name": "Sabah",

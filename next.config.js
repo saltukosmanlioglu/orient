@@ -1,3 +1,4 @@
+// @ts-check
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   env: {
@@ -7,6 +8,10 @@ const nextConfig = {
   pageExtensions: ["next.tsx"],
   compiler: {
     styledComponents: true,
+    relay: {
+      src: './',
+      language: 'typescript',
+    },
   },
   async redirects() {
     return [
