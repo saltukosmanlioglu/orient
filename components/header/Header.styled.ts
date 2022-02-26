@@ -12,10 +12,14 @@ export const Header = styled.header`
 export const SocialMedia = styled.div`
   display: flex;
   flex-wrap: wrap;
-  gap: 0px 8px;
+  gap: 0px 12px;
   flex-direction: row;
   align-items: center;
   position: absolute;
   right: 12px;
   bottom: 0;
+
+  a {
+    // border: 1px solid red;
+  }
 `
