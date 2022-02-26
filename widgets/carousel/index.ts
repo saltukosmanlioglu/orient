@@ -1,3 +1,3 @@
-export type { CarouselProps } from './types'
+export type { CarouselProps, CarouselDataProps } from './types'
 
 export { default } from './Carousel'

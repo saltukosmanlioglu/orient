@@ -1,15 +1,15 @@
 import React, { useState } from 'react'
 import HipchatChevronDownIcon from '@atlaskit/icon/glyph/hipchat/chevron-down'
 
-import * as Styled from './Accordion.styled'
 import { AccordionProps } from './types'
+import * as Styled from './Accordion.styled'
 
 const Accordion: React.FunctionComponent<AccordionProps> = ({
   children,
   color,
   title,
 }) => {
-  const [isActive, setIsActive] = useState<boolean>(false)
+  const [isActive, setIsActive] = useState<boolean>(true)
 
   const handleClick = () => {
     setIsActive(!isActive)

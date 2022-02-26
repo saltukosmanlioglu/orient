@@ -1,11 +1,13 @@
 import React from 'react'
-import Image from 'next/image'
+import Link from 'next/link'
 import { Carousel as Banner } from 'react-responsive-carousel'
 
 import { CarouselProps } from './types'
 import * as Styled from './Carousel.styled'
 
-const Carousel: React.FunctionComponent<CarouselProps> = () => {
+const Carousel: React.FunctionComponent<CarouselProps> = ({
+  data
+}) => {
   return (
     <Styled.Carousel>
       <Banner
@@ -18,15 +20,11 @@ const Carousel: React.FunctionComponent<CarouselProps> = () => {
         stopOnHover
         swipeable
       >
-        <div>
-          <img height="100%" width="100%" src="https://www.klasiksanatlar.com/img/sayfalar/b/1_1598452306_resim.png" />
-        </div>
-        <div>
-          <img height="100%" width="100%" src="https://www.klasiksanatlar.com/img/sayfalar/b/1_1598452306_resim.png" />
-        </div>
-        <div>
-          <img height="100%" width="100%" src="https://www.klasiksanatlar.com/img/sayfalar/b/1_1598452306_resim.png" />
-        </div>
+        {data.map((item, index) => (
+          <Link key={index} href={item.href}>
+            <img height="100%" width="100%" src={item.image} />
+          </Link>
+        ))}
       </Banner>
       <Styled.Bar />
     </Styled.Carousel>

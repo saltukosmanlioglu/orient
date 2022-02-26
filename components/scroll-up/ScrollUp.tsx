@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import Image from 'next/image'
 import HipchatChevronUpIcon from '@atlaskit/icon/glyph/hipchat/chevron-up'
 
+import { ScrollUpProps } from './types'
 import * as Styled from './ScrollUp.styled'
 
-const ScrollUp: React.FunctionComponent = () => {
+const ScrollUp: React.FunctionComponent<ScrollUpProps> = ({
+  color,
+}) => {
   const [visible, setVisible] = useState<boolean>(false)
 
   const handleClick = () => {
@@ -16,7 +18,7 @@ const ScrollUp: React.FunctionComponent = () => {
 
   useEffect(() => {
     window.addEventListener('scroll', () => {
-      if (window && window.scrollY > 100) {
+      if (window && window.scrollY > 350) {
         setVisible(true)
       } else {
         setVisible(false)
@@ -25,8 +27,8 @@ const ScrollUp: React.FunctionComponent = () => {
   }, [])
 
   return visible ? (
-    <Styled.ScrollUp onClick={handleClick}>
-      <HipchatChevronUpIcon label="chevron-down" primaryColor="#2f5143" size="xlarge" />
+    <Styled.ScrollUp color={color} onClick={handleClick}>
+      <HipchatChevronUpIcon label="chevron-down" primaryColor={color} size="xlarge" />
     </Styled.ScrollUp>
   ) : null
 }

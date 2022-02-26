@@ -13,6 +13,10 @@ const GlobalStyle = createGlobalStyle`
     font-family: trajan;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   a {
     text-decoration: none;
     color: #000;

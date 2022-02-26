@@ -3,7 +3,6 @@ import Head from 'next/head'
 
 import Footer from '@/components/footer'
 import Header from '@/components/header'
-import ScrollUp from '@/components/scroll-up'
 
 import { MainProps } from './types'
 
@@ -21,7 +20,6 @@ const Main: React.FunctionComponent<MainProps> = ({
         {children}
       </section>
       <Footer />
-      <ScrollUp />
     </React.Fragment>
   )
 }
