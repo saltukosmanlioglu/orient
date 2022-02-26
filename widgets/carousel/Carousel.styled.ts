@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 
 export const Carousel = styled.section`
+  position: relative;
+
   .dot {
     width: 12px !important;
     height: 12px !important;
@@ -25,7 +27,7 @@ export const Bar = styled.div`
   bottom: 0; 
   left: 0;
   right: 0; 
-  zIndex: 10; 
+  z-index: 10; 
   height: 2px; 
-  backgroundColor: #3d5955;
+  background-color: #3d5955;
 `
