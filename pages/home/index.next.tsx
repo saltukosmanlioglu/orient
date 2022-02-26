@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react'
 import { NextPage } from 'next'
 
 import Accordion from '@/components/accordion'
+import Loader from '@/components/loader'
 import Product from '@/components/product'
 import ScrollUp from '@/components/scroll-up'
 import Main from '@/layout/main'
@@ -10,19 +11,19 @@ import Carousel, {
 } from '@/widgets/carousel'
 import Lang from '@/widgets/lang'
 
+import { CategoriesResponse } from './types'
 import * as Styled from './Home.styled'
-import { MenuResponse } from './types'
 
 const Home: NextPage = () => {
-  const [menu, setMenu] = useState<MenuResponse>([])
+  const [categories, setCategories] = useState<CategoriesResponse>()
 
-  const getMenu = useCallback(() => {
-    fetch(`${process.env.NEXT_APP_API}?lang=${localStorage.getItem('lang')}`, {
+  const getCategories = useCallback(() => {
+    fetch(`${process.env.NEXT_APP_API}categories?lang=${localStorage.getItem('lang')}`, {
       method: 'GET',
     })
       .then(response => response.json())
       .then((data) => {
-        setMenu([
+        setCategories([
           {
             "name": "Sabah",
             "color": "#465956",
@@ -227,7 +228,7 @@ const Home: NextPage = () => {
       })
       .catch((error) => {
         console.log(error)
-        setMenu([
+        setCategories([
           {
             "name": "Sabah",
             "color": "#465956",
@@ -432,7 +433,7 @@ const Home: NextPage = () => {
       })
   }, [])
 
-  useEffect(() => getMenu(), [getMenu])
+  useEffect(() => getCategories(), [getCategories])
 
   const carouselData: Array<CarouselDataProps> = [
     { id: '1', image: 'https://www.klasiksanatlar.com/img/sayfalar/b/1_1598452306_resim.png' },
@@ -440,31 +441,31 @@ const Home: NextPage = () => {
     { id: '3', image: 'https://www.klasiksanatlar.com/img/sayfalar/b/1_1598452306_resim.png' },
   ]
 
-  return (
+  return categories && categories.length > 0 ? (
     <Main title="Orient by G.K.">
       <Carousel data={carouselData} />
       <Lang />
       <Styled.Gutter>
-        {menu.map((item, index) => (
-          <Accordion key={index} color={item.color} title={item.name}>
+        {categories.map((category, index) => (
+          <Accordion key={index} color={category.color} title={category.name}>
             <Styled.Gutter>
-              {item.products
-                ? item.products.map((product, productIndex) => (
+              {category.products
+                ? category.products.map((product, productIndex) => (
                   <Product
                     key={productIndex}
-                    color={item.color}
+                    color={category.color}
                     href={`/product/${product.id}`}
                     price="85"
                     productName={product.name}
                   />
                 ))
-                : item.subCategories?.map((subCategory, subCategoryIndex) => (
-                  <Accordion key={subCategoryIndex} color={item.color} title={subCategory.name}>
+                : category.subCategories?.map((subCategory, subCategoryIndex) => (
+                  <Accordion key={subCategoryIndex} color={category.color} title={subCategory.name}>
                     <Styled.Gutter>
                       {subCategory.products.map((product, productIndex) => (
                         <Product
                           key={productIndex}
-                          color={item.color}
+                          color={category.color}
                           href={`/product/${product.id}`}
                           price="85"
                           productName={product.name}
@@ -480,7 +481,7 @@ const Home: NextPage = () => {
       </Styled.Gutter>
       <ScrollUp color="#2f5143" />
     </Main>
-  )
+  ) : null
 }
 
 export default Home

@@ -35,7 +35,7 @@ export const Bar = styled.div`
   position: absolute;
   right: -2px;
   top: -2px;
-  height: 90%;
+  height: 70%;
   width: 3px;
   background-color: #fff;
   z-index: 1000;

@@ -22,7 +22,7 @@ const Detail: React.FunctionComponent = () => {
           allergens: "Fındık, Nohut, Çilek",
           description: "Haşlanmış yumurta, Taze Baharatlı Renkli Salata (Sarı-kırmızı cherry domates, Izgara yeşil zeytin, Maydanoz, Nane, Reyhan, Limon vinegret, Taze Baharatlı Yeşil Salata)",
           image: "https://www.klasiksanatlar.com/img/sayfalar/b/1_1598452306_resim.png",
-          name: "Avokado ve Lor Peyniri Ekmek Üstü",
+          name: "Avokado ve Lor Peynirli Ekmek Üstü",
           price: "85"
         })
       })
@@ -31,7 +31,7 @@ const Detail: React.FunctionComponent = () => {
           allergens: "Fındık, Nohut, Çilek",
           description: "Haşlanmış yumurta, Taze Baharatlı Renkli Salata (Sarı-kırmızı cherry domates, Izgara yeşil zeytin, Maydanoz, Nane, Reyhan, Limon vinegret, Taze Baharatlı Yeşil Salata)",
           image: "https://www.klasiksanatlar.com/img/sayfalar/b/1_1598452306_resim.png",
-          name: "Avokado ve Lor Peyniri Ekmek Üstü",
+          name: "Avokado ve Lor Peynirli Ekmek Üstü",
           price: "85"
         })
         console.log(error)
@@ -41,7 +41,7 @@ const Detail: React.FunctionComponent = () => {
   useEffect(() => getProduct(), [])
 
   return data ? (
-    <Main title="Orient by G.K.">
+    <Main title={`${data.name} | Orient by G.K.`}>
       <img width="100%" src={data.image} />
       <div style={{ padding: '0 20px' }}>
         <ProductDetail

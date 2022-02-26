@@ -8,11 +8,11 @@ export interface SubCategory {
   products: Array<Product>
 }
 
-export interface Menu {
-  name: string
+export interface Categories {
   color: string
+  name: string
   products?: Array<Product>
   subCategories?: Array<SubCategory>
 }
 
-export interface MenuResponse extends Array<Menu> { }
+export interface CategoriesResponse extends Array<Categories> { }
