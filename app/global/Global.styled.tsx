@@ -15,6 +15,7 @@ const GlobalStyle = createGlobalStyle`
 
   html {
     scroll-behavior: smooth;
+    -webkit-scroll-behavior: smooth;
   }
 
   a {
