@@ -19,7 +19,7 @@ const Main: React.FunctionComponent<MainProps> = ({
       <section style={{ marginBottom: 40 }}>
         {children}
       </section>
-      <Footer />
+      {/* <Footer /> */}
     </React.Fragment>
   )
 }
