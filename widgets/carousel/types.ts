@@ -1,5 +1,5 @@
 export interface CarouselDataProps {
-  href: string
+  id: string
   image: string
 }
 

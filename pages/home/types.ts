@@ -4,12 +4,12 @@ export interface Product {
 }
 
 export interface SubCategory {
-  category: string
+  name: string
   products: Array<Product>
 }
 
 export interface Menu {
-  category: string
+  name: string
   color: string
   products?: Array<Product>
   subCategories?: Array<SubCategory>

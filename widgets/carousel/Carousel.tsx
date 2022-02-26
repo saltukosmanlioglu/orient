@@ -21,7 +21,7 @@ const Carousel: React.FunctionComponent<CarouselProps> = ({
         swipeable
       >
         {data.map((item, index) => (
-          <Link key={index} href={item.href}>
+          <Link key={index} href={`/product/${item.id}`}>
             <img height="100%" width="100%" src={item.image} />
           </Link>
         ))}

@@ -3,6 +3,7 @@ import { NextPage } from 'next'
 
 import Accordion from '@/components/accordion'
 import Product from '@/components/product'
+import ScrollUp from '@/components/scroll-up'
 import Main from '@/layout/main'
 import Carousel, {
   CarouselDataProps
@@ -11,20 +12,19 @@ import Lang from '@/widgets/lang'
 
 import * as Styled from './Home.styled'
 import { MenuResponse } from './types'
-import ScrollUp from '@/components/scroll-up'
 
 const Home: NextPage = () => {
   const [menu, setMenu] = useState<MenuResponse>([])
 
   const getMenu = useCallback(() => {
-    fetch('http://example.com/movies.json', {
+    fetch(`${process.env.NEXT_APP_API}?lang=${localStorage.getItem('lang')}`, {
       method: 'GET',
     })
       .then(response => response.json())
-      .then(data => {
+      .then((data) => {
         setMenu([
           {
-            "category": "Sabah",
+            "name": "Sabah",
             "color": "#465956",
             "products": [
               {
@@ -42,7 +42,7 @@ const Home: NextPage = () => {
             ],
           },
           {
-            "category": "Salata",
+            "name": "Salata",
             "color": "#465956",
             "products": [
               {
@@ -60,7 +60,7 @@ const Home: NextPage = () => {
             ],
           },
           {
-            "category": "Sushi",
+            "name": "Sushi",
             "color": "#465956",
             "products": [
               {
@@ -78,11 +78,11 @@ const Home: NextPage = () => {
             ],
           },
           {
-            "category": "Soft İçecekler",
+            "name": "Soft İçecekler",
             "color": "#a29d2f",
             "subCategories": [
               {
-                "category": "Bahçeden tazeler",
+                "name": "Bahçeden tazeler",
                 "products": [
                   {
                     "id": "1",
@@ -99,7 +99,7 @@ const Home: NextPage = () => {
                 ]
               },
               {
-                "category": "Coldpress juice collection",
+                "name": "Coldpress juice collection",
                 "products": [
                   {
                     "id": "1",
@@ -116,7 +116,7 @@ const Home: NextPage = () => {
                 ]
               },
               {
-                "category": "Ev yapımı taze limonatalar",
+                "name": "Ev yapımı taze limonatalar",
                 "products": [
                   {
                     "id": "1",
@@ -133,7 +133,7 @@ const Home: NextPage = () => {
                 ]
               },
               {
-                "category": "Buzlu çay",
+                "name": "Buzlu çay",
                 "products": [
                   {
                     "id": "1",
@@ -152,7 +152,7 @@ const Home: NextPage = () => {
             ]
           },
           {
-            "category": "Taze İçecekler",
+            "name": "Taze İçecekler",
             "color": "#a29d2f",
             "products": [
               {
@@ -170,7 +170,7 @@ const Home: NextPage = () => {
             ],
           },
           {
-            "category": "Kokteyller",
+            "name": "Kokteyller",
             "color": "#d15335",
             "products": [
               {
@@ -188,7 +188,7 @@ const Home: NextPage = () => {
             ],
           },
           {
-            "category": "Vermut",
+            "name": "Vermut",
             "color": "#d15335",
             "products": [
               {
@@ -206,7 +206,7 @@ const Home: NextPage = () => {
             ],
           },
           {
-            "category": "Nargile",
+            "name": "Nargile",
             "color": "#998575",
             "products": [
               {
@@ -229,7 +229,7 @@ const Home: NextPage = () => {
         console.log(error)
         setMenu([
           {
-            "category": "Sabah",
+            "name": "Sabah",
             "color": "#465956",
             "products": [
               {
@@ -247,7 +247,7 @@ const Home: NextPage = () => {
             ],
           },
           {
-            "category": "Salata",
+            "name": "Salata",
             "color": "#465956",
             "products": [
               {
@@ -265,7 +265,7 @@ const Home: NextPage = () => {
             ],
           },
           {
-            "category": "Sushi",
+            "name": "Sushi",
             "color": "#465956",
             "products": [
               {
@@ -283,11 +283,11 @@ const Home: NextPage = () => {
             ],
           },
           {
-            "category": "Soft İçecekler",
+            "name": "Soft İçecekler",
             "color": "#a29d2f",
             "subCategories": [
               {
-                "category": "Bahçeden tazeler",
+                "name": "Bahçeden tazeler",
                 "products": [
                   {
                     "id": "1",
@@ -304,7 +304,7 @@ const Home: NextPage = () => {
                 ]
               },
               {
-                "category": "Coldpress juice collection",
+                "name": "Coldpress juice collection",
                 "products": [
                   {
                     "id": "1",
@@ -321,7 +321,7 @@ const Home: NextPage = () => {
                 ]
               },
               {
-                "category": "Ev yapımı taze limonatalar",
+                "name": "Ev yapımı taze limonatalar",
                 "products": [
                   {
                     "id": "1",
@@ -338,7 +338,7 @@ const Home: NextPage = () => {
                 ]
               },
               {
-                "category": "Buzlu çay",
+                "name": "Buzlu çay",
                 "products": [
                   {
                     "id": "1",
@@ -357,7 +357,7 @@ const Home: NextPage = () => {
             ]
           },
           {
-            "category": "Taze İçecekler",
+            "name": "Taze İçecekler",
             "color": "#a29d2f",
             "products": [
               {
@@ -375,7 +375,7 @@ const Home: NextPage = () => {
             ],
           },
           {
-            "category": "Kokteyller",
+            "name": "Kokteyller",
             "color": "#d15335",
             "products": [
               {
@@ -393,7 +393,7 @@ const Home: NextPage = () => {
             ],
           },
           {
-            "category": "Vermut",
+            "name": "Vermut",
             "color": "#d15335",
             "products": [
               {
@@ -411,7 +411,7 @@ const Home: NextPage = () => {
             ],
           },
           {
-            "category": "Nargile",
+            "name": "Nargile",
             "color": "#998575",
             "products": [
               {
@@ -434,11 +434,10 @@ const Home: NextPage = () => {
 
   useEffect(() => getMenu(), [getMenu])
 
-
   const carouselData: Array<CarouselDataProps> = [
-    { href: '/product/1', image: 'https://www.klasiksanatlar.com/img/sayfalar/b/1_1598452306_resim.png' },
-    { href: '/product/2', image: 'https://www.klasiksanatlar.com/img/sayfalar/b/1_1598452306_resim.png' },
-    { href: '/product/3', image: 'https://www.klasiksanatlar.com/img/sayfalar/b/1_1598452306_resim.png' },
+    { id: '1', image: 'https://www.klasiksanatlar.com/img/sayfalar/b/1_1598452306_resim.png' },
+    { id: '2', image: 'https://www.klasiksanatlar.com/img/sayfalar/b/1_1598452306_resim.png' },
+    { id: '3', image: 'https://www.klasiksanatlar.com/img/sayfalar/b/1_1598452306_resim.png' },
   ]
 
   return (
@@ -447,7 +446,7 @@ const Home: NextPage = () => {
       <Lang />
       <Styled.Gutter>
         {menu.map((item, index) => (
-          <Accordion key={index} color={item.color} title={item.category}>
+          <Accordion key={index} color={item.color} title={item.name}>
             <Styled.Gutter>
               {item.products
                 ? item.products.map((product, productIndex) => (
@@ -460,7 +459,7 @@ const Home: NextPage = () => {
                   />
                 ))
                 : item.subCategories?.map((subCategory, subCategoryIndex) => (
-                  <Accordion key={subCategoryIndex} color={item.color} title={subCategory.category}>
+                  <Accordion key={subCategoryIndex} color={item.color} title={subCategory.name}>
                     <Styled.Gutter>
                       {subCategory.products.map((product, productIndex) => (
                         <Product

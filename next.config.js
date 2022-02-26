@@ -1,5 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  env: {
+    NEXT_APP_API: 'https://localhost:3000'
+  },
   reactStrictMode: true,
   pageExtensions: ["next.tsx"],
   compiler: {
