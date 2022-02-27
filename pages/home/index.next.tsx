@@ -1,6 +1,8 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { NextPage } from 'next'
+import HipchatChevronDownIcon from '@atlaskit/icon/glyph/hipchat/chevron-down'
 
+import { Language } from '@/app/global'
 import Accordion from '@/components/accordion'
 import Product from '@/components/product'
 import ScrollUp from '@/components/scroll-up'
@@ -8,7 +10,6 @@ import Main from '@/layout/main'
 import Carousel, {
   CarouselDataProps
 } from '@/widgets/carousel'
-import Lang from '@/widgets/lang'
 
 import { CategoriesResponse } from './types'
 import * as Styled from './Home.styled'
@@ -17,8 +18,50 @@ const Home: NextPage = () => {
   const [categories, setCategories] = useState<CategoriesResponse>()
   const [sliderData, setSliderData] = useState<Array<CarouselDataProps>>([])
 
-  const getCategories = useCallback(() => {
-    fetch(`${process.env.NEXT_APP_API}categories?lang=${'EN'}`, {
+  const [refreshCount, setRefreshCount] = useState<number>(0)
+
+  const [isActive, setIsActive] = useState<boolean>(false)
+  const [lang, setLang] = useState<Language>(Language.Tr)
+
+  const setLanguage = (activeLang: Language, passiveLang: Language): void => {
+    setLang(passiveLang)
+    localStorage.setItem('language', activeLang)
+    setRefreshCount(c => c + 1)
+  }
+
+  const selectLang = useCallback((): void => {
+    if (localStorage.getItem('language') === Language.Tr) {
+      setLanguage(Language.Tr, Language.Eng)
+    } else {
+      setLanguage(Language.Eng, Language.Tr)
+    }
+  }, [lang])
+
+  useEffect((): void => {
+    fetch(`${process.env.NEXT_APP_API}slider`, {
+      method: 'GET'
+    })
+      .then(response => response.json())
+      .then(data => {
+        setSliderData([
+          { id: '1', image: 'https://www.klasiksanatlar.com/img/sayfalar/b/1_1598452306_resim.png' },
+          { id: '2', image: 'https://www.klasiksanatlar.com/img/sayfalar/b/1_1598452306_resim.png' },
+          { id: '3', image: 'https://www.klasiksanatlar.com/img/sayfalar/b/1_1598452306_resim.png' },
+        ])
+      })
+      .catch(error => {
+        setSliderData([
+          { id: '1', image: 'https://www.klasiksanatlar.com/img/sayfalar/b/1_1598452306_resim.png' },
+          { id: '2', image: 'https://www.klasiksanatlar.com/img/sayfalar/b/1_1598452306_resim.png' },
+          { id: '3', image: 'https://www.klasiksanatlar.com/img/sayfalar/b/1_1598452306_resim.png' },
+        ])
+      })
+
+      localStorage.setItem('lang', Language.Tr)
+  }, [])
+
+  const getCategories = useCallback((): void => {
+    fetch(`${process.env.NEXT_APP_API}categories?language=${localStorage.getItem('lang')}`, {
       method: 'GET',
     })
       .then(response => response.json())
@@ -430,37 +473,34 @@ const Home: NextPage = () => {
           },
         ])
       })
-  }, [])
+  }, [refreshCount])
 
-  useEffect(() => getCategories(), [getCategories])
-
-  useEffect(() => {
-    fetch(`${process.env.NEXT_APP_API}slider`, {
-      method: 'GET'
-    })
-      .then(response => response.json())
-      .then(data => {
-        console.log(data)
-        setSliderData([
-          { id: '1', image: 'https://www.klasiksanatlar.com/img/sayfalar/b/1_1598452306_resim.png' },
-          { id: '2', image: 'https://www.klasiksanatlar.com/img/sayfalar/b/1_1598452306_resim.png' },
-          { id: '3', image: 'https://www.klasiksanatlar.com/img/sayfalar/b/1_1598452306_resim.png' },
-        ])
-      })
-      .catch(error => {
-        console.log(error)
-        setSliderData([
-          { id: '1', image: 'https://www.klasiksanatlar.com/img/sayfalar/b/1_1598452306_resim.png' },
-          { id: '2', image: 'https://www.klasiksanatlar.com/img/sayfalar/b/1_1598452306_resim.png' },
-          { id: '3', image: 'https://www.klasiksanatlar.com/img/sayfalar/b/1_1598452306_resim.png' },
-        ])
-      })
-  }, [])
+  useEffect((): void => getCategories(), [getCategories])
 
   return categories && categories.length > 0 ? (
     <Main title="Orient by G.K.">
+
       {sliderData ? <Carousel data={sliderData} /> : null}
-      <Lang />
+
+      <Styled.Lang>
+        <Styled.Detail>
+          <p>Menü</p>
+          <Styled.Langs onClick={() => setIsActive(!isActive)}>
+            <p>{lang}</p>
+            <Styled.Arrow isActive={isActive}>
+              <HipchatChevronDownIcon label="chevron-down" primaryColor="#2f5143" size="medium" />
+            </Styled.Arrow>
+            {isActive && (
+              <Styled.Dropdown>
+                <Styled.LangButton onClick={selectLang}>
+                  {lang === Language.Tr ? Language.Eng : Language.Tr}
+                </Styled.LangButton>
+              </Styled.Dropdown>
+            )}
+          </Styled.Langs>
+        </Styled.Detail>
+      </Styled.Lang>
+
       <Styled.Gutter>
         {categories.map((category, index) => (
           <Accordion key={index} color={category.color} title={category.name}>
@@ -495,6 +535,7 @@ const Home: NextPage = () => {
           </Accordion>
         ))}
       </Styled.Gutter>
+
       <ScrollUp color="#2f5143" />
     </Main>
   ) : null

@@ -11,7 +11,6 @@ const Detail: React.FunctionComponent = () => {
   const [data, setData] = useState<ProductDetailProps>()
 
   const router = useRouter()
-
   const { id } = router.query
 
   const getProduct = useCallback(() => {
