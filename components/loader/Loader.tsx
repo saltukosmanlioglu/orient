@@ -14,7 +14,7 @@ const Loader: React.FunctionComponent = () => {
   return (
     <Styled.Loader>
       <div>
-        <p>Orient'e Hoş Geldiniz..</p>
+        <p>Oriente Hoş Geldiniz..</p>
         <CircleLoader color="#000" css={override} />
       </div>
     </Styled.Loader>
