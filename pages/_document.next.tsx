@@ -6,7 +6,7 @@ import Document, {
 } from 'next/document'
 
 class MyDocument extends Document {
-  render() {
+  render(): JSX.Element {
     return (
       <Html>
         <Head>
@@ -16,7 +16,7 @@ class MyDocument extends Document {
           <Main />
           <NextScript />
         </body>
-      </Html>
+      </Html >
     )
   }
 }

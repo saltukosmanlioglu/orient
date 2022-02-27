@@ -36,7 +36,7 @@ const Home: NextPage = () => {
     } else {
       setLanguage(Language.Tr)
     }
-  }, [lang])
+  }, [])
 
   useEffect((): void => {
     fetch(`${process.env.NEXT_APP_API}slider`, {
@@ -62,418 +62,420 @@ const Home: NextPage = () => {
   }, [])
 
   const getCategories = useCallback((): void => {
-    fetch(`${process.env.NEXT_APP_API}categories?language=${localStorage.getItem('language')}`, {
-      method: 'GET',
-    })
-      .then(response => response.json())
-      .then(data => {
-        setCategories([
-          {
-            "name": "Sabah",
-            "color": "#465956",
-            "products": [
-              {
-                "id": "1",
-                "name": "Kahvaltı tabağı"
-              },
-              {
-                "id": "2",
-                "name": "Fit brunch"
-              },
-              {
-                "id": "3",
-                "name": "Coldpress juice collection"
-              }
-            ],
-          },
-          {
-            "name": "Salata",
-            "color": "#465956",
-            "products": [
-              {
-                "id": "1",
-                "name": "Kahvaltı tabağı"
-              },
-              {
-                "id": "2",
-                "name": "Fit brunch"
-              },
-              {
-                "id": "3",
-                "name": "Coldpress juice collection"
-              }
-            ],
-          },
-          {
-            "name": "Sushi",
-            "color": "#465956",
-            "products": [
-              {
-                "id": "1",
-                "name": "Kahvaltı tabağı"
-              },
-              {
-                "id": "2",
-                "name": "Fit brunch"
-              },
-              {
-                "id": "3",
-                "name": "Coldpress juice collection"
-              }
-            ],
-          },
-          {
-            "name": "Soft İçecekler",
-            "color": "#a29d2f",
-            "subCategories": [
-              {
-                "name": "Bahçeden tazeler",
-                "products": [
-                  {
-                    "id": "1",
-                    "name": "Kahvaltı tabağı"
-                  },
-                  {
-                    "id": "2",
-                    "name": "Fit brunch"
-                  },
-                  {
-                    "id": "3",
-                    "name": "Coldpress juice collection"
-                  }
-                ]
-              },
-              {
-                "name": "Coldpress juice collection",
-                "products": [
-                  {
-                    "id": "1",
-                    "name": "Kahvaltı tabağı"
-                  },
-                  {
-                    "id": "2",
-                    "name": "Fit brunch"
-                  },
-                  {
-                    "id": "3",
-                    "name": "Coldpress juice collection"
-                  }
-                ]
-              },
-              {
-                "name": "Ev yapımı taze limonatalar",
-                "products": [
-                  {
-                    "id": "1",
-                    "name": "Kahvaltı tabağı"
-                  },
-                  {
-                    "id": "2",
-                    "name": "Fit brunch"
-                  },
-                  {
-                    "id": "3",
-                    "name": "Coldpress juice collection"
-                  }
-                ]
-              },
-              {
-                "name": "Buzlu çay",
-                "products": [
-                  {
-                    "id": "1",
-                    "name": "Kahvaltı tabağı"
-                  },
-                  {
-                    "id": "2",
-                    "name": "Fit brunch"
-                  },
-                  {
-                    "id": "3",
-                    "name": "Coldpress juice collection"
-                  }
-                ]
-              },
-            ]
-          },
-          {
-            "name": "Taze İçecekler",
-            "color": "#a29d2f",
-            "products": [
-              {
-                "id": "1",
-                "name": "Kahvaltı tabağı"
-              },
-              {
-                "id": "2",
-                "name": "Fit brunch"
-              },
-              {
-                "id": "3",
-                "name": "Coldpress juice collection"
-              }
-            ],
-          },
-          {
-            "name": "Kokteyller",
-            "color": "#d15335",
-            "products": [
-              {
-                "id": "1",
-                "name": "Kahvaltı tabağı"
-              },
-              {
-                "id": "2",
-                "name": "Fit brunch"
-              },
-              {
-                "id": "3",
-                "name": "Coldpress juice collection"
-              }
-            ],
-          },
-          {
-            "name": "Vermut",
-            "color": "#d15335",
-            "products": [
-              {
-                "id": "1",
-                "name": "Kahvaltı tabağı"
-              },
-              {
-                "id": "2",
-                "name": "Fit brunch"
-              },
-              {
-                "id": "3",
-                "name": "Coldpress juice collection"
-              }
-            ],
-          },
-          {
-            "name": "Nargile",
-            "color": "#998575",
-            "products": [
-              {
-                "id": "1",
-                "name": "Kahvaltı tabağı"
-              },
-              {
-                "id": "2",
-                "name": "Fit brunch"
-              },
-              {
-                "id": "3",
-                "name": "Coldpress juice collection"
-              }
-            ],
-          },
-        ])
+    if (refreshCount >= 0) {
+      fetch(`${process.env.NEXT_APP_API}categories?language=${localStorage.getItem('language')}`, {
+        method: 'GET',
       })
-      .catch(error => {
-        setCategories([
-          {
-            "name": "Sabah",
-            "color": "#465956",
-            "products": [
-              {
-                "id": "1",
-                "name": "Kahvaltı tabağı"
-              },
-              {
-                "id": "2",
-                "name": "Fit brunch"
-              },
-              {
-                "id": "3",
-                "name": "Coldpress juice collection"
-              }
-            ],
-          },
-          {
-            "name": "Salata",
-            "color": "#465956",
-            "products": [
-              {
-                "id": "1",
-                "name": "Kahvaltı tabağı"
-              },
-              {
-                "id": "2",
-                "name": "Fit brunch"
-              },
-              {
-                "id": "3",
-                "name": "Coldpress juice collection"
-              }
-            ],
-          },
-          {
-            "name": "Sushi",
-            "color": "#465956",
-            "products": [
-              {
-                "id": "1",
-                "name": "Kahvaltı tabağı"
-              },
-              {
-                "id": "2",
-                "name": "Fit brunch"
-              },
-              {
-                "id": "3",
-                "name": "Coldpress juice collection"
-              }
-            ],
-          },
-          {
-            "name": "Soft İçecekler",
-            "color": "#a29d2f",
-            "subCategories": [
-              {
-                "name": "Bahçeden tazeler",
-                "products": [
-                  {
-                    "id": "1",
-                    "name": "Kahvaltı tabağı"
-                  },
-                  {
-                    "id": "2",
-                    "name": "Fit brunch"
-                  },
-                  {
-                    "id": "3",
-                    "name": "Coldpress juice collection"
-                  }
-                ]
-              },
-              {
-                "name": "Coldpress juice collection",
-                "products": [
-                  {
-                    "id": "1",
-                    "name": "Kahvaltı tabağı"
-                  },
-                  {
-                    "id": "2",
-                    "name": "Fit brunch"
-                  },
-                  {
-                    "id": "3",
-                    "name": "Coldpress juice collection"
-                  }
-                ]
-              },
-              {
-                "name": "Ev yapımı taze limonatalar",
-                "products": [
-                  {
-                    "id": "1",
-                    "name": "Kahvaltı tabağı"
-                  },
-                  {
-                    "id": "2",
-                    "name": "Fit brunch"
-                  },
-                  {
-                    "id": "3",
-                    "name": "Coldpress juice collection"
-                  }
-                ]
-              },
-              {
-                "name": "Buzlu çay",
-                "products": [
-                  {
-                    "id": "1",
-                    "name": "Kahvaltı tabağı"
-                  },
-                  {
-                    "id": "2",
-                    "name": "Fit brunch"
-                  },
-                  {
-                    "id": "3",
-                    "name": "Coldpress juice collection"
-                  }
-                ]
-              },
-            ]
-          },
-          {
-            "name": "Taze İçecekler",
-            "color": "#a29d2f",
-            "products": [
-              {
-                "id": "1",
-                "name": "Kahvaltı tabağı"
-              },
-              {
-                "id": "2",
-                "name": "Fit brunch"
-              },
-              {
-                "id": "3",
-                "name": "Coldpress juice collection"
-              }
-            ],
-          },
-          {
-            "name": "Kokteyller",
-            "color": "#d15335",
-            "products": [
-              {
-                "id": "1",
-                "name": "Kahvaltı tabağı"
-              },
-              {
-                "id": "2",
-                "name": "Fit brunch"
-              },
-              {
-                "id": "3",
-                "name": "Coldpress juice collection"
-              }
-            ],
-          },
-          {
-            "name": "Vermut",
-            "color": "#d15335",
-            "products": [
-              {
-                "id": "1",
-                "name": "Kahvaltı tabağı"
-              },
-              {
-                "id": "2",
-                "name": "Fit brunch"
-              },
-              {
-                "id": "3",
-                "name": "Coldpress juice collection"
-              }
-            ],
-          },
-          {
-            "name": "Nargile",
-            "color": "#998575",
-            "products": [
-              {
-                "id": "1",
-                "name": "Kahvaltı tabağı"
-              },
-              {
-                "id": "2",
-                "name": "Fit brunch"
-              },
-              {
-                "id": "3",
-                "name": "Coldpress juice collection"
-              }
-            ],
-          },
-        ])
-      })
+        .then(response => response.json())
+        .then(data => {
+          setCategories([
+            {
+              "name": "Sabah",
+              "color": "#465956",
+              "products": [
+                {
+                  "id": "1",
+                  "name": "Kahvaltı tabağı"
+                },
+                {
+                  "id": "2",
+                  "name": "Fit brunch"
+                },
+                {
+                  "id": "3",
+                  "name": "Coldpress juice collection"
+                }
+              ],
+            },
+            {
+              "name": "Salata",
+              "color": "#465956",
+              "products": [
+                {
+                  "id": "1",
+                  "name": "Kahvaltı tabağı"
+                },
+                {
+                  "id": "2",
+                  "name": "Fit brunch"
+                },
+                {
+                  "id": "3",
+                  "name": "Coldpress juice collection"
+                }
+              ],
+            },
+            {
+              "name": "Sushi",
+              "color": "#465956",
+              "products": [
+                {
+                  "id": "1",
+                  "name": "Kahvaltı tabağı"
+                },
+                {
+                  "id": "2",
+                  "name": "Fit brunch"
+                },
+                {
+                  "id": "3",
+                  "name": "Coldpress juice collection"
+                }
+              ],
+            },
+            {
+              "name": "Soft İçecekler",
+              "color": "#a29d2f",
+              "subCategories": [
+                {
+                  "name": "Bahçeden tazeler",
+                  "products": [
+                    {
+                      "id": "1",
+                      "name": "Kahvaltı tabağı"
+                    },
+                    {
+                      "id": "2",
+                      "name": "Fit brunch"
+                    },
+                    {
+                      "id": "3",
+                      "name": "Coldpress juice collection"
+                    }
+                  ]
+                },
+                {
+                  "name": "Coldpress juice collection",
+                  "products": [
+                    {
+                      "id": "1",
+                      "name": "Kahvaltı tabağı"
+                    },
+                    {
+                      "id": "2",
+                      "name": "Fit brunch"
+                    },
+                    {
+                      "id": "3",
+                      "name": "Coldpress juice collection"
+                    }
+                  ]
+                },
+                {
+                  "name": "Ev yapımı taze limonatalar",
+                  "products": [
+                    {
+                      "id": "1",
+                      "name": "Kahvaltı tabağı"
+                    },
+                    {
+                      "id": "2",
+                      "name": "Fit brunch"
+                    },
+                    {
+                      "id": "3",
+                      "name": "Coldpress juice collection"
+                    }
+                  ]
+                },
+                {
+                  "name": "Buzlu çay",
+                  "products": [
+                    {
+                      "id": "1",
+                      "name": "Kahvaltı tabağı"
+                    },
+                    {
+                      "id": "2",
+                      "name": "Fit brunch"
+                    },
+                    {
+                      "id": "3",
+                      "name": "Coldpress juice collection"
+                    }
+                  ]
+                },
+              ]
+            },
+            {
+              "name": "Taze İçecekler",
+              "color": "#a29d2f",
+              "products": [
+                {
+                  "id": "1",
+                  "name": "Kahvaltı tabağı"
+                },
+                {
+                  "id": "2",
+                  "name": "Fit brunch"
+                },
+                {
+                  "id": "3",
+                  "name": "Coldpress juice collection"
+                }
+              ],
+            },
+            {
+              "name": "Kokteyller",
+              "color": "#d15335",
+              "products": [
+                {
+                  "id": "1",
+                  "name": "Kahvaltı tabağı"
+                },
+                {
+                  "id": "2",
+                  "name": "Fit brunch"
+                },
+                {
+                  "id": "3",
+                  "name": "Coldpress juice collection"
+                }
+              ],
+            },
+            {
+              "name": "Vermut",
+              "color": "#d15335",
+              "products": [
+                {
+                  "id": "1",
+                  "name": "Kahvaltı tabağı"
+                },
+                {
+                  "id": "2",
+                  "name": "Fit brunch"
+                },
+                {
+                  "id": "3",
+                  "name": "Coldpress juice collection"
+                }
+              ],
+            },
+            {
+              "name": "Nargile",
+              "color": "#998575",
+              "products": [
+                {
+                  "id": "1",
+                  "name": "Kahvaltı tabağı"
+                },
+                {
+                  "id": "2",
+                  "name": "Fit brunch"
+                },
+                {
+                  "id": "3",
+                  "name": "Coldpress juice collection"
+                }
+              ],
+            },
+          ])
+        })
+        .catch(error => {
+          setCategories([
+            {
+              "name": "Sabah",
+              "color": "#465956",
+              "products": [
+                {
+                  "id": "1",
+                  "name": "Kahvaltı tabağı"
+                },
+                {
+                  "id": "2",
+                  "name": "Fit brunch"
+                },
+                {
+                  "id": "3",
+                  "name": "Coldpress juice collection"
+                }
+              ],
+            },
+            {
+              "name": "Salata",
+              "color": "#465956",
+              "products": [
+                {
+                  "id": "1",
+                  "name": "Kahvaltı tabağı"
+                },
+                {
+                  "id": "2",
+                  "name": "Fit brunch"
+                },
+                {
+                  "id": "3",
+                  "name": "Coldpress juice collection"
+                }
+              ],
+            },
+            {
+              "name": "Sushi",
+              "color": "#465956",
+              "products": [
+                {
+                  "id": "1",
+                  "name": "Kahvaltı tabağı"
+                },
+                {
+                  "id": "2",
+                  "name": "Fit brunch"
+                },
+                {
+                  "id": "3",
+                  "name": "Coldpress juice collection"
+                }
+              ],
+            },
+            {
+              "name": "Soft İçecekler",
+              "color": "#a29d2f",
+              "subCategories": [
+                {
+                  "name": "Bahçeden tazeler",
+                  "products": [
+                    {
+                      "id": "1",
+                      "name": "Kahvaltı tabağı"
+                    },
+                    {
+                      "id": "2",
+                      "name": "Fit brunch"
+                    },
+                    {
+                      "id": "3",
+                      "name": "Coldpress juice collection"
+                    }
+                  ]
+                },
+                {
+                  "name": "Coldpress juice collection",
+                  "products": [
+                    {
+                      "id": "1",
+                      "name": "Kahvaltı tabağı"
+                    },
+                    {
+                      "id": "2",
+                      "name": "Fit brunch"
+                    },
+                    {
+                      "id": "3",
+                      "name": "Coldpress juice collection"
+                    }
+                  ]
+                },
+                {
+                  "name": "Ev yapımı taze limonatalar",
+                  "products": [
+                    {
+                      "id": "1",
+                      "name": "Kahvaltı tabağı"
+                    },
+                    {
+                      "id": "2",
+                      "name": "Fit brunch"
+                    },
+                    {
+                      "id": "3",
+                      "name": "Coldpress juice collection"
+                    }
+                  ]
+                },
+                {
+                  "name": "Buzlu çay",
+                  "products": [
+                    {
+                      "id": "1",
+                      "name": "Kahvaltı tabağı"
+                    },
+                    {
+                      "id": "2",
+                      "name": "Fit brunch"
+                    },
+                    {
+                      "id": "3",
+                      "name": "Coldpress juice collection"
+                    }
+                  ]
+                },
+              ]
+            },
+            {
+              "name": "Taze İçecekler",
+              "color": "#a29d2f",
+              "products": [
+                {
+                  "id": "1",
+                  "name": "Kahvaltı tabağı"
+                },
+                {
+                  "id": "2",
+                  "name": "Fit brunch"
+                },
+                {
+                  "id": "3",
+                  "name": "Coldpress juice collection"
+                }
+              ],
+            },
+            {
+              "name": "Kokteyller",
+              "color": "#d15335",
+              "products": [
+                {
+                  "id": "1",
+                  "name": "Kahvaltı tabağı"
+                },
+                {
+                  "id": "2",
+                  "name": "Fit brunch"
+                },
+                {
+                  "id": "3",
+                  "name": "Coldpress juice collection"
+                }
+              ],
+            },
+            {
+              "name": "Vermut",
+              "color": "#d15335",
+              "products": [
+                {
+                  "id": "1",
+                  "name": "Kahvaltı tabağı"
+                },
+                {
+                  "id": "2",
+                  "name": "Fit brunch"
+                },
+                {
+                  "id": "3",
+                  "name": "Coldpress juice collection"
+                }
+              ],
+            },
+            {
+              "name": "Nargile",
+              "color": "#998575",
+              "products": [
+                {
+                  "id": "1",
+                  "name": "Kahvaltı tabağı"
+                },
+                {
+                  "id": "2",
+                  "name": "Fit brunch"
+                },
+                {
+                  "id": "3",
+                  "name": "Coldpress juice collection"
+                }
+              ],
+            },
+          ])
+        })
+    }
   }, [refreshCount])
 
   useEffect((): void => getCategories(), [getCategories])

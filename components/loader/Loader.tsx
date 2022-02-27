@@ -6,7 +6,7 @@ const Loader: React.FunctionComponent = () => {
   return (
     <Styled.Loader>
       <div>
-        Orient'e Hoş Geldiniz..
+        Oriente Hoş Geldiniz..
       </div>
     </Styled.Loader>
   )

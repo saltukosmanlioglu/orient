@@ -11,7 +11,7 @@ const Product: React.FunctionComponent<ProductProps> = ({
   productName
 }) => {
   return (
-    <Link href={href}>
+    <Link href={href} passHref>
       <Styled.Product color={color}>
         <Styled.ProductName style={{ width: '80%' }}>
           <p>{productName}</p>
