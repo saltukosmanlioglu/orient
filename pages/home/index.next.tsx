@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { NextPage } from 'next'
 
 import Accordion from '@/components/accordion'
@@ -15,13 +15,14 @@ import * as Styled from './Home.styled'
 
 const Home: NextPage = () => {
   const [categories, setCategories] = useState<CategoriesResponse>()
+  const [sliderData, setSliderData] = useState<Array<CarouselDataProps>>([])
 
   const getCategories = useCallback(() => {
     fetch(`${process.env.NEXT_APP_API}categories?lang=${'EN'}`, {
       method: 'GET',
     })
       .then(response => response.json())
-      .then((data) => {
+      .then(data => {
         setCategories([
           {
             "name": "Sabah",
@@ -225,7 +226,7 @@ const Home: NextPage = () => {
           },
         ])
       })
-      .catch((error) => {
+      .catch(error => {
         setCategories([
           {
             "name": "Sabah",
@@ -433,15 +434,32 @@ const Home: NextPage = () => {
 
   useEffect(() => getCategories(), [getCategories])
 
-  const carouselData: Array<CarouselDataProps> = [
-    { id: '1', image: 'https://www.klasiksanatlar.com/img/sayfalar/b/1_1598452306_resim.png' },
-    { id: '2', image: 'https://www.klasiksanatlar.com/img/sayfalar/b/1_1598452306_resim.png' },
-    { id: '3', image: 'https://www.klasiksanatlar.com/img/sayfalar/b/1_1598452306_resim.png' },
-  ]
+  useEffect(() => {
+    fetch(`${process.env.NEXT_APP_API}slider`, {
+      method: 'GET'
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log(data)
+        setSliderData([
+          { id: '1', image: 'https://www.klasiksanatlar.com/img/sayfalar/b/1_1598452306_resim.png' },
+          { id: '2', image: 'https://www.klasiksanatlar.com/img/sayfalar/b/1_1598452306_resim.png' },
+          { id: '3', image: 'https://www.klasiksanatlar.com/img/sayfalar/b/1_1598452306_resim.png' },
+        ])
+      })
+      .catch(error => {
+        console.log(error)
+        setSliderData([
+          { id: '1', image: 'https://www.klasiksanatlar.com/img/sayfalar/b/1_1598452306_resim.png' },
+          { id: '2', image: 'https://www.klasiksanatlar.com/img/sayfalar/b/1_1598452306_resim.png' },
+          { id: '3', image: 'https://www.klasiksanatlar.com/img/sayfalar/b/1_1598452306_resim.png' },
+        ])
+      })
+  }, [])
 
   return categories && categories.length > 0 ? (
     <Main title="Orient by G.K.">
-      <Carousel data={carouselData} />
+      {sliderData ? <Carousel data={sliderData} /> : null}
       <Lang />
       <Styled.Gutter>
         {categories.map((category, index) => (

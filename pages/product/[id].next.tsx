@@ -15,7 +15,9 @@ const Detail: React.FunctionComponent = () => {
   const { id } = router.query
 
   const getProduct = useCallback(() => {
-    fetch(`localhost:3000?lang=${localStorage.getItem('lang')}&id=${id}`, { method: 'GET' })
+    fetch(`${process.env.NEXT_APP_API}product-detail?lang=${localStorage.getItem('lang')}&id=${id}`, {
+      method: 'GET'
+    })
       .then(response => response.json())
       .then(data => {
         setData({
@@ -38,18 +40,18 @@ const Detail: React.FunctionComponent = () => {
       })
   }, [id])
 
-  useEffect(() => getProduct(), [])
+  useEffect(() => getProduct(), [getProduct])
 
   return data ? (
     <Main title={`${data.name} | Orient by G.K.`}>
-      <img width="100%" src={data.image} />
+      <img width="100%" src={data.image} alt="Product image" />
       <div style={{ padding: '0 20px' }}>
         <ProductDetail
           description={data.description}
           price={data.price}
           title={data.name}
         />
-        <Allergens allerjens={data.allergens} />
+        <Allergens allergens={data.allergens} />
       </div>
     </Main>
   ) : null

@@ -4,12 +4,12 @@ import { AllergensProps } from './types'
 import * as Styled from './Allergens.styled'
 
 const Allergens: React.FunctionComponent<AllergensProps> = ({
-  allerjens
+  allergens
 }) => {
   return (
     <Styled.Allergens>
       <b>Alerjenler</b>
-      <p>{allerjens}</p>
+      <p>{allergens}</p>
     </Styled.Allergens>
   )
 }

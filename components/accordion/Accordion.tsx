@@ -23,11 +23,7 @@ const Accordion: React.FunctionComponent<AccordionProps> = ({
         </Styled.Arrow>
         <p>{title}</p>
       </Styled.Header>
-      {isActive && (
-        <Styled.Detail>
-          {children}
-        </Styled.Detail>
-      )}
+      {isActive && (<Styled.Detail>{children}</Styled.Detail>)}
     </Styled.Accordion>
   )
 }

@@ -1,3 +1,3 @@
 export interface AllergensProps { 
-  allerjens: string
+  allergens: string
 }

@@ -9,17 +9,17 @@ const Header: React.FunctionComponent<HeaderProps> = () => {
   return (
     <Styled.Header>
       <Link href="/home">
-        <Image src="/images/logo.png" width={80} height={80} alt="Orient by G.K." />
+        <Image width={80} height={80} src="/images/logo.png" alt="Orient by G.K." />
       </Link>
       <Styled.SocialMedia>
-        <Link href="https://www.facebook.com/">
+        <Link href="https://www.facebook.com/orientbygk">
           <a target="_blank">
-            <img width="10" src="/images/facebook.png" alt="Facebook link" />
+            <Image height={20} width={10} src="/images/facebook.png" alt="Facebook logo" />
           </a>
         </Link>
-        <Link href="https://www.instagram.com/">
+        <Link href="https://www.instagram.com/orientbygk">
           <a target="_blank">
-            <img width="20" src="/images/instagram.png" alt="Instagram link" />
+            <Image height={20} width={20} src="/images/instagram.png" alt="Instagram logo" />
           </a>
         </Link>
       </Styled.SocialMedia>
