@@ -14,7 +14,7 @@ const Detail: React.FunctionComponent = () => {
   const { id } = router.query
 
   const getProduct = useCallback(() => {
-    fetch(`${process.env.NEXT_APP_API}product-detail?lang=${localStorage.getItem('lang')}&id=${id}`, {
+    fetch(`${process.env.NEXT_APP_API}product-detail?lang=${localStorage.getItem('language')}&id=${id}`, {
       method: 'GET'
     })
       .then(response => response.json())

@@ -18,22 +18,22 @@ const Home: NextPage = () => {
   const [categories, setCategories] = useState<CategoriesResponse>()
   const [sliderData, setSliderData] = useState<Array<CarouselDataProps>>([])
 
-  const [refreshCount, setRefreshCount] = useState<number>(0)
-
   const [isActive, setIsActive] = useState<boolean>(false)
   const [lang, setLang] = useState<Language>(Language.Tr)
 
-  const setLanguage = (activeLang: Language, passiveLang: Language): void => {
-    setLang(passiveLang)
+  const [refreshCount, setRefreshCount] = useState<number>(0)
+
+  const setLanguage = (activeLang: Language): void => {
+    setLang(activeLang)
     localStorage.setItem('language', activeLang)
     setRefreshCount(c => c + 1)
   }
 
   const selectLang = useCallback((): void => {
     if (localStorage.getItem('language') === Language.Tr) {
-      setLanguage(Language.Tr, Language.Eng)
+      setLanguage(Language.Eng)
     } else {
-      setLanguage(Language.Eng, Language.Tr)
+      setLanguage(Language.Tr)
     }
   }, [lang])
 
@@ -57,11 +57,11 @@ const Home: NextPage = () => {
         ])
       })
 
-      localStorage.setItem('lang', Language.Tr)
+    localStorage.setItem('language', Language.Tr)
   }, [])
 
   const getCategories = useCallback((): void => {
-    fetch(`${process.env.NEXT_APP_API}categories?language=${localStorage.getItem('lang')}`, {
+    fetch(`${process.env.NEXT_APP_API}categories?language=${localStorage.getItem('language')}`, {
       method: 'GET',
     })
       .then(response => response.json())
