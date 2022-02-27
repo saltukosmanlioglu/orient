@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 
+import Loader from '@/components/loader'
 import Main from '@/layout/main'
 import Allergens from '@/widgets/allergens'
 import ProductDetail from '@/widgets/product-detail'
@@ -53,7 +54,7 @@ const Detail: React.FunctionComponent = () => {
         <Allergens allergens={data.allergens} />
       </div>
     </Main>
-  ) : null
+  ) : <Loader />
 }
 
 export default Detail

@@ -4,6 +4,7 @@ import HipchatChevronDownIcon from '@atlaskit/icon/glyph/hipchat/chevron-down'
 
 import { Language } from '@/app/global'
 import Accordion from '@/components/accordion'
+import Loader from '@/components/loader'
 import Product from '@/components/product'
 import ScrollUp from '@/components/scroll-up'
 import Main from '@/layout/main'
@@ -538,7 +539,7 @@ const Home: NextPage = () => {
 
       <ScrollUp color="#2f5143" />
     </Main>
-  ) : null
+  ) : <Loader />
 }
 
 export default Home
