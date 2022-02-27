@@ -10,10 +10,12 @@
   },
   "dependencies": {
     "@atlaskit/icon": "^21.10.3",
+    "@emotion/react": "^11.8.1",
     "next": "12.1.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-responsive-carousel": "^3.2.22",
+    "react-spinners": "^0.11.0",
     "styled-components": "^5.3.3"
   },
   "devDependencies": {

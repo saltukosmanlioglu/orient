@@ -480,7 +480,7 @@ const Home: NextPage = () => {
 
   useEffect((): void => getCategories(), [getCategories])
 
-  return categories && categories.length < 0 ? (
+  return categories && categories.length > 0 ? (
     <Main title="Orient by G.K.">
 
       {sliderData ? <Carousel data={sliderData} /> : null}
