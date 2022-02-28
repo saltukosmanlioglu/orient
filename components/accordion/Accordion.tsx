@@ -9,23 +9,25 @@ const Accordion: React.FunctionComponent<AccordionProps> = ({
   color,
   title,
 }) => {
-  const [isActive, setIsActive] = useState<boolean>(true)
+  const [isActive, setIsActive] = useState<boolean>(false)
 
   const handleClick = () => {
     setIsActive(!isActive)
   }
 
   return (
-    <Styled.Accordion color={color} onClick={handleClick}>
-      <Styled.Header color={color}>
-        <Styled.Arrow isActive={isActive}>
-          <HipchatChevronDownIcon label="chevron-down" primaryColor={color} size="medium" />
-        </Styled.Arrow>
-        <p>{title}</p>
-      </Styled.Header>
+    <React.Fragment>
+      <Styled.Accordion color={color} onClick={handleClick}>
+        <Styled.Header color={color}>
+          <Styled.Arrow isActive={isActive}>
+            <HipchatChevronDownIcon label="chevron-down" primaryColor={color} size="medium" />
+          </Styled.Arrow>
+          <p>{title}</p>
+        </Styled.Header>
+      </Styled.Accordion>
       {isActive && (<Styled.Detail>{children}</Styled.Detail>)}
-    </Styled.Accordion>
+    </React.Fragment>
   )
 }
 
-export default Accordion;
+export default Accordion
