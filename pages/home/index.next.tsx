@@ -16,7 +16,7 @@ import { CategoriesResponse } from './types'
 import * as Styled from './Home.styled'
 
 const Home: NextPage = () => {
-  const [categories, setCategories] = useState<CategoriesResponse>()
+  const [categories, setCategories] = useState<CategoriesResponse>([])
   const [sliderData, setSliderData] = useState<Array<CarouselDataProps>>([])
 
   const [isActive, setIsActive] = useState<boolean>(false)
