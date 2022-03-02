@@ -15,27 +15,14 @@ const Detail: React.FunctionComponent = () => {
   const { id } = router.query
 
   const getProduct = useCallback(() => {
-    fetch(`${process.env.NEXT_APP_API}product-detail?language=${localStorage.getItem('language')}&id=${id}`, {
+    fetch(`${process.env.NEXT_APP_API}product/${id}?language=${localStorage.getItem('language')}`, {
       method: 'GET'
     })
       .then(response => response.json())
       .then(data => {
-        setData({
-          allergens: "Fındık, Nohut, Çilek",
-          description: "Haşlanmış yumurta, Taze Baharatlı Renkli Salata (Sarı-kırmızı cherry domates, Izgara yeşil zeytin, Maydanoz, Nane, Reyhan, Limon vinegret, Taze Baharatlı Yeşil Salata)",
-          image: "https://www.klasiksanatlar.com/img/sayfalar/b/1_1598452306_resim.png",
-          name: "Avokado ve Lor Peynirli Ekmek Üstü",
-          price: "85"
-        })
+        setData(data)
       })
       .catch((error) => {
-        setData({
-          allergens: "Fındık, Nohut, Çilek",
-          description: "Haşlanmış yumurta, Taze Baharatlı Renkli Salata (Sarı-kırmızı cherry domates, Izgara yeşil zeytin, Maydanoz, Nane, Reyhan, Limon vinegret, Taze Baharatlı Yeşil Salata)",
-          image: "https://www.klasiksanatlar.com/img/sayfalar/b/1_1598452306_resim.png",
-          name: "Avokado ve Lor Peynirli Ekmek Üstü",
-          price: "85"
-        })
         console.log(error)
       })
   }, [id])
@@ -43,13 +30,13 @@ const Detail: React.FunctionComponent = () => {
   useEffect(() => getProduct(), [getProduct])
 
   return data ? (
-    <Main title={`${data.name} | Orient by G.K.`}>
+    <Main title={`${data.title} | Orient by G.K.`}>
       <img width="100%" src={data.image} alt="Product image" />
       <div style={{ padding: '0 20px' }}>
         <ProductDetail
           description={data.description}
           price={data.price}
-          title={data.name}
+          title={data.title}
         />
         <Allergens allergens={data.allergens} />
       </div>

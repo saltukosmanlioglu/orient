@@ -2,7 +2,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   env: {
-    NEXT_APP_API: 'https://www.example.com/'
+    NEXT_APP_API: 'http://localhost/'
   },
   reactStrictMode: true,
   pageExtensions: ["next.tsx"],

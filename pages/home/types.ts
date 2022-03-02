@@ -1,16 +1,16 @@
 export interface Product {
   id: string
-  name: string
+  title: string
 }
 
 export interface SubCategory {
-  name: string
+  title: string
   products: Array<Product>
 }
 
 export interface Categories {
   color: string
-  name: string
+  title: string
   products?: Array<Product>
   subCategories?: Array<SubCategory>
 }

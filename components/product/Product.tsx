@@ -8,14 +8,14 @@ const Product: React.FunctionComponent<ProductProps> = ({
   color,
   href,
   price,
-  productName
+  title
 }) => {
   return (
     <Link href={href} passHref>
       <Styled.Product color={color}>
-        <Styled.ProductName style={{ width: '80%' }}>
-          <p>{productName}</p>
-        </Styled.ProductName>
+        <Styled.Title style={{ width: '80%' }}>
+          <p>{title}</p>
+        </Styled.Title>
         <Styled.Price>
           <p>{price} ₺</p>
         </Styled.Price>

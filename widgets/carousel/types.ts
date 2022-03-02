@@ -1,5 +1,5 @@
 export interface CarouselDataProps {
-  id: string
+  productId: string
   image: string
 }
 

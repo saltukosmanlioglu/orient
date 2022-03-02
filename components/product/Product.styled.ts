@@ -16,7 +16,7 @@ export const Product = styled.a<{ color: string }>`
   }
 `
 
-export const ProductName = styled.div`
+export const Title = styled.div`
   width: 80%;
 
   p {
