@@ -1,10 +1,11 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 export const Accordion = styled.div<{ color: string }>`
   width: 100%;
-`
+`;
 
-export const Header = styled.div<{ color: string; }>`
+export const Header = styled.div<{ color: string }>`
+  width: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -16,13 +17,14 @@ export const Header = styled.div<{ color: string; }>`
     color: ${({ color }) => color};
     font-size: 16px;
   }
-`
+`;
 
-export const Arrow = styled.div<{ isActive: boolean; }>`
-  transition: .3s all;
-  transform: ${({ isActive }) => isActive ? 'rotate(540deg)' : 'rotate(0deg)'};
-`
+export const Arrow = styled.div<{ isActive: boolean }>`
+  transition: 0.3s all;
+  transform: ${({ isActive }) =>
+    isActive ? "rotate(540deg)" : "rotate(0deg)"};
+`;
 
 export const Detail = styled.div`
   padding: 12px;
-`
+`;

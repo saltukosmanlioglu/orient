@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const Product = styled.a<{ color: string }>`
-  width: 100%;
+  width: calc(100vw - 24px);
   display: flex;
   flex-direction: row;
   align-items: center;

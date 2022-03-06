@@ -9,7 +9,7 @@ const Allergens: React.FunctionComponent<AllergensProps> = ({
   return (
     <Styled.Allergens>
       <b>Alerjenler</b>
-      <p>{allergens}</p>
+      <p>{allergens ? allergens : 'Rahatlıkla yiyebilirsiniz.'}</p>
     </Styled.Allergens>
   )
 }

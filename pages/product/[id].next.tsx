@@ -31,7 +31,7 @@ const Detail: React.FunctionComponent = () => {
 
   return data ? (
     <Main title={`${data.title} | Orient by G.K.`}>
-      <img width="100%" src={data.image} alt="Product image" />
+      <img width="100%" src={`${process.env.NEXT_APP_API}file/serve/${data.image}`} alt="Product image" />
       <div style={{ padding: '0 20px' }}>
         <ProductDetail
           description={data.description}
