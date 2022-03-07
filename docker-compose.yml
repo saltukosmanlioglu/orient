@@ -1,0 +1,6 @@
+version: "3.3"
+services:
+  orient-ui:
+    build: .
+    ports:
+      - "49904:3000"
