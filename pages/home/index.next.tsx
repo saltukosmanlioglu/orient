@@ -12,6 +12,7 @@ import Carousel, { CarouselDataProps } from "@/widgets/carousel";
 
 import { CategoriesResponse } from "./types";
 import * as Styled from "./Home.styled";
+import NoContent from "@/components/no-content";
 
 const Home: NextPage = () => {
   const [categories, setCategories] = useState<CategoriesResponse>([]);
@@ -53,9 +54,14 @@ const Home: NextPage = () => {
 
   const getCategories = useCallback((): void => {
     if (refreshCount >= 0) {
-      fetch(`${process.env.NEXT_APP_API}category?language=${localStorage.getItem('language')}`, {
-        method: "GET",
-      })
+      fetch(
+        `${process.env.NEXT_APP_API}category?language=${localStorage.getItem(
+          "language"
+        )}`,
+        {
+          method: "GET",
+        }
+      )
         .then((response) => response.json())
         .then((data) => {
           setCategories(data);
@@ -68,9 +74,13 @@ const Home: NextPage = () => {
 
   useEffect((): void => getCategories(), [getCategories]);
 
-  return categories && categories.length > 0 ? (
+  return categories && sliderData ? (
     <Main title="Orient by G.K.">
-      {sliderData ? <Carousel data={sliderData} /> : null}
+      {sliderData.length > 0 ? (
+        <Carousel data={sliderData} />
+      ) : (
+        <NoContent message="Slider verisi bulunamadı" />
+      )}
 
       <Styled.Lang>
         <Styled.Detail>
@@ -96,41 +106,51 @@ const Home: NextPage = () => {
       </Styled.Lang>
 
       <Styled.Gutter>
-        {categories.map((category, index) => (
-          <Accordion key={index} color={category.color} title={category.title}>
-            <Styled.Gutter>
-              {category.products &&
-                category.products.map((product, productIndex) => (
-                  <Product
-                    key={productIndex}
-                    color={category.color}
-                    href={`/product/${product.id}`}
-                    price="85"
-                    title={product.title}
-                  />
-                ))}
-              {category.subCategories?.map((subCategory, subCategoryIndex) => (
-                <Accordion
-                  key={subCategoryIndex}
-                  color={category.color}
-                  title={subCategory.title}
-                >
-                  <Styled.Gutter>
-                    {subCategory.products.map((product, productIndex) => (
-                      <Product
-                        key={productIndex}
-                        color={category.color}
-                        href={`/product/${product.id}`}
-                        price="85"
-                        title={product.title}
-                      />
-                    ))}
-                  </Styled.Gutter>
-                </Accordion>
-              ))}
-            </Styled.Gutter>
-          </Accordion>
-        ))}
+        {categories.length > 0 ? (
+          categories.map((category, index) => (
+            <Accordion
+              key={index}
+              color={category.color}
+              title={category.title}
+            >
+              <Styled.Gutter>
+                {category.products &&
+                  category.products.map((product, productIndex) => (
+                    <Product
+                      key={productIndex}
+                      color={category.color}
+                      href={`/product/${product.id}`}
+                      price="85"
+                      title={product.title}
+                    />
+                  ))}
+                {category.subCategories?.map(
+                  (subCategory, subCategoryIndex) => (
+                    <Accordion
+                      key={subCategoryIndex}
+                      color={category.color}
+                      title={subCategory.title}
+                    >
+                      <Styled.Gutter>
+                        {subCategory.products.map((product, productIndex) => (
+                          <Product
+                            key={productIndex}
+                            color={category.color}
+                            href={`/product/${product.id}`}
+                            price="85"
+                            title={product.title}
+                          />
+                        ))}
+                      </Styled.Gutter>
+                    </Accordion>
+                  )
+                )}
+              </Styled.Gutter>
+            </Accordion>
+          ))
+        ) : (
+          <NoContent message="Kategori verisi bulunamadı" />
+        )}
       </Styled.Gutter>
 
       <ScrollUp color="#2f5143" />
