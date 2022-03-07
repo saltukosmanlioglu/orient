@@ -2,7 +2,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   env: {
-    NEXT_APP_API: 'http://api.orientbygk.com/web/'
+    NEXT_APP_API: 'http://localhost/web/'
   },
   reactStrictMode: true,
   pageExtensions: ["next.tsx"],
