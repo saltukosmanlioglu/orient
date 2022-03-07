@@ -1,13 +1,11 @@
-import React from 'react'
-import Link from 'next/link'
-import { Carousel as Banner } from 'react-responsive-carousel'
+import React from "react";
+import Link from "next/link";
+import { Carousel as Banner } from "react-responsive-carousel";
 
-import { CarouselProps } from './types'
-import * as Styled from './Carousel.styled'
+import { CarouselProps } from "./types";
+import * as Styled from "./Carousel.styled";
 
-const Carousel: React.FunctionComponent<CarouselProps> = ({
-  data
-}) => {
+const Carousel: React.FunctionComponent<CarouselProps> = ({ data }) => {
   return (
     <Styled.Carousel>
       <Banner
@@ -21,14 +19,19 @@ const Carousel: React.FunctionComponent<CarouselProps> = ({
         swipeable
       >
         {data.map((item, index) => (
-          <Link key={index} href={`/product/${item.productId}`}>
-            <img height="100%" width="100%" src={item.image} />
-          </Link>
+          <div key={index} onClick={() => window.open(`/product/${item.productId}`, '_self')}>
+            <img
+              style={{ objectFit: "cover", backgroundColor: '#fff' }}
+              width="100%"
+              height={300}
+              src={`${process.env.NEXT_APP_API}file/serve/${item.image}`}
+            />
+          </div>
         ))}
       </Banner>
       <Styled.Bar />
     </Styled.Carousel>
-  )
-}
+  );
+};
 
-export default Carousel
+export default Carousel;

@@ -26,8 +26,5 @@ export const Title = styled.div`
 
 export const Price = styled.div`
   width: 20%;
-
-  p {
-    text-align: right;
-  }
+  text-align: right;
 `
