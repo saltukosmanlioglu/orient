@@ -3,4 +3,4 @@ services:
   orient-ui:
     build: .
     ports:
-      - "3000:49904"
+      - "49904:3000"
