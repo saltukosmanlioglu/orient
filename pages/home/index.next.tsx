@@ -5,17 +5,18 @@ import HipchatChevronDownIcon from "@atlaskit/icon/glyph/hipchat/chevron-down";
 import { Language } from "@/app/global";
 import Accordion from "@/components/accordion";
 import Loader from "@/components/loader";
+import NoContent from "@/components/no-content";
 import Product from "@/components/product";
 import ScrollUp from "@/components/scroll-up";
 import Main from "@/layout/main";
 import Carousel, { CarouselDataProps } from "@/widgets/carousel";
 
-import { CategoriesResponse } from "./types";
+import { CategoriesResponse, LanguagesResponse } from "./types";
 import * as Styled from "./Home.styled";
-import NoContent from "@/components/no-content";
 
 const Home: NextPage = () => {
   const [categories, setCategories] = useState<CategoriesResponse>([]);
+  const [languages, setLanguages] = useState<LanguagesResponse>([]);
   const [sliderData, setSliderData] = useState<Array<CarouselDataProps>>([]);
 
   const [isActive, setIsActive] = useState<boolean>(false);
@@ -42,12 +43,8 @@ const Home: NextPage = () => {
       method: "GET",
     })
       .then((response) => response.json())
-      .then((data) => {
-        setSliderData(data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+      .then((data) => setSliderData(data))
+      .catch((error) => console.log(error));
 
     localStorage.setItem("language", Language.Tr);
   }, []);
@@ -72,19 +69,30 @@ const Home: NextPage = () => {
     }
   }, [refreshCount]);
 
+  useEffect((): void => {
+    fetch(`${process.env.NEXT_APP_API}language`)
+      .then((response) => response.json())
+      .then((data) => setLanguages(data))
+      .catch((error) => console.log(error));
+  }, []);
+
   useEffect((): void => getCategories(), [getCategories]);
 
   return categories && sliderData ? (
     <Main title="Orient by G.K.">
-      {sliderData.length > 0 ? (
-        <Carousel data={sliderData} />
+      {sliderData ? (
+        sliderData.length > 0 ? (
+          <Carousel data={sliderData} />
+        ) : (
+          <NoContent message="Slider verisi bulunamadı" />
+        )
       ) : (
-        <NoContent message="Slider verisi bulunamadı" />
+        <Loader />
       )}
 
       <Styled.Lang>
         <Styled.Detail>
-          <p>Menü</p>
+          <b>Menü</b>
           <Styled.Langs onClick={() => setIsActive(!isActive)}>
             <p>{lang}</p>
             <Styled.Arrow isActive={isActive}>
@@ -96,9 +104,15 @@ const Home: NextPage = () => {
             </Styled.Arrow>
             {isActive && (
               <Styled.Dropdown>
-                <Styled.LangButton onClick={selectLang}>
-                  {lang === Language.Tr ? Language.Eng : Language.Tr}
-                </Styled.LangButton>
+                {languages.length > 0 ? (
+                  <Styled.LangButton onClick={selectLang}>TR</Styled.LangButton>
+                ) : null}
+                {languages &&
+                  languages.map((language) => (
+                    <Styled.LangButton onClick={selectLang}>
+                      {language.language}
+                    </Styled.LangButton>
+                  ))}
               </Styled.Dropdown>
             )}
           </Styled.Langs>
@@ -106,50 +120,60 @@ const Home: NextPage = () => {
       </Styled.Lang>
 
       <Styled.Gutter>
-        {categories.length > 0 ? (
-          categories.map((category, index) => (
-            <Accordion
-              key={index}
-              color={category.color}
-              title={category.title}
-            >
-              <Styled.Gutter>
-                {category.products &&
-                  category.products.map((product, productIndex) => (
-                    <Product
-                      key={productIndex}
-                      color={category.color}
-                      href={`/product/${product.id}`}
-                      price="85"
-                      title={product.title}
-                    />
-                  ))}
-                {category.subCategories?.map(
-                  (subCategory, subCategoryIndex) => (
-                    <Accordion
-                      key={subCategoryIndex}
-                      color={category.color}
-                      title={subCategory.title}
-                    >
-                      <Styled.Gutter>
-                        {subCategory.products.map((product, productIndex) => (
-                          <Product
-                            key={productIndex}
-                            color={category.color}
-                            href={`/product/${product.id}`}
-                            price="85"
-                            title={product.title}
-                          />
-                        ))}
-                      </Styled.Gutter>
-                    </Accordion>
-                  )
-                )}
-              </Styled.Gutter>
-            </Accordion>
-          ))
+        {categories ? (
+          categories.length > 0 ? (
+            categories.map((category, index) => (
+              <Accordion
+                key={index}
+                color={category.color}
+                title={category.title}
+              >
+                <Styled.Gutter>
+                  {category.products &&
+                    category.products.map((product, productIndex) => (
+                      <Product
+                        key={productIndex}
+                        color={category.color}
+                        href={`/product/${product.id}`}
+                        px={24}
+                        title={product.title}
+                      />
+                    ))}
+                  {category.subCategories?.map(
+                    (subCategory, subCategoryIndex) => (
+                      <Accordion
+                        key={subCategoryIndex}
+                        color={
+                          subCategory.color ? subCategory.color : category.color
+                        }
+                        title={subCategory.title}
+                      >
+                        <Styled.Gutter>
+                          {subCategory.products.map((product, productIndex) => (
+                            <Product
+                              key={productIndex}
+                              color={
+                                subCategory.color
+                                  ? subCategory.color
+                                  : category.color
+                              }
+                              href={`/product/${product.id}`}
+                              px={48}
+                              title={product.title}
+                            />
+                          ))}
+                        </Styled.Gutter>
+                      </Accordion>
+                    )
+                  )}
+                </Styled.Gutter>
+              </Accordion>
+            ))
+          ) : (
+            <NoContent message="Kategori verisi bulunamadı" />
+          )
         ) : (
-          <NoContent message="Kategori verisi bulunamadı" />
+          <Loader />
         )}
       </Styled.Gutter>
 

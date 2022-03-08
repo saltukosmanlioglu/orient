@@ -1,38 +1,47 @@
-import React, { useCallback, useEffect, useState } from 'react'
-import { useRouter } from 'next/router'
+import React, { useCallback, useEffect, useState } from "react";
+import { useRouter } from "next/router";
 
-import Loader from '@/components/loader'
-import Main from '@/layout/main'
-import Allergens from '@/widgets/allergens'
-import ProductDetail from '@/widgets/product-detail'
+import Loader from "@/components/loader";
+import Main from "@/layout/main";
+import Allergens from "@/widgets/allergens";
+import ProductDetail from "@/widgets/product-detail";
 
-import { ProductDetailProps } from './types'
+import { ProductDetailProps } from "./types";
 
 const Detail: React.FunctionComponent = () => {
-  const [data, setData] = useState<ProductDetailProps>()
+  const [data, setData] = useState<ProductDetailProps>();
 
-  const router = useRouter()
-  const { id } = router.query
+  const router = useRouter();
+  const { id } = router.query;
 
   const getProduct = useCallback(() => {
-    fetch(`${process.env.NEXT_APP_API}product/${id}?language=${localStorage.getItem('language')}`, {
-      method: 'GET'
-    })
-      .then(response => response.json())
-      .then(data => {
-        setData(data)
+    fetch(
+      `${process.env.NEXT_APP_API}product/${id}?language=${localStorage.getItem(
+        "language"
+      )}`,
+      {
+        method: "GET",
+      }
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        setData(data);
       })
       .catch((error) => {
-        console.log(error)
-      })
-  }, [id])
+        console.log(error);
+      });
+  }, [id]);
 
-  useEffect(() => getProduct(), [getProduct])
+  useEffect(() => getProduct(), [getProduct]);
 
   return data ? (
     <Main title={`${data.title} | Orient by G.K.`}>
-      <img width="100%" src={`${process.env.NEXT_APP_API}file/serve/${data.image}`} alt="Product image" />
-      <div style={{ padding: '0 20px' }}>
+      <img
+        width="100%"
+        src={`${process.env.NEXT_APP_API}file/serve/${data.image}`}
+        alt="Product image"
+      />
+      <div style={{ padding: "0 20px" }}>
         <ProductDetail
           description={data.description}
           price={data.price}
@@ -41,7 +50,9 @@ const Detail: React.FunctionComponent = () => {
         <Allergens allergens={data.allergens} />
       </div>
     </Main>
-  ) : <Loader />
-}
+  ) : (
+    <Loader />
+  );
+};
 
-export default Detail
+export default Detail;

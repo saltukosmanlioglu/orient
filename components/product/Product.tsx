@@ -8,19 +8,19 @@ import * as Styled from "./Product.styled";
 const Product: React.FunctionComponent<ProductProps> = ({
   color,
   href,
-  price,
+  px,
   title,
 }) => {
   return (
     <Link href={href} passHref>
-      <Styled.Product color={color}>
+      <Styled.Product px={px} color={color}>
         <Styled.Title style={{ width: "80%" }}>
           <p>{title}</p>
         </Styled.Title>
         <Styled.Price>
           <ArrowRightIcon
             label="arr§ow-right"
-            primaryColor={"#0288d1"}
+            primaryColor={color}
             size="medium"
           />
         </Styled.Price>

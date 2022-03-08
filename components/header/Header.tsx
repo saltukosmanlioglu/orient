@@ -1,6 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import logo from '../../public/images/logo.png'
 
 import { HeaderProps } from './types'
 import * as Styled from './Header.styled'
@@ -10,7 +11,7 @@ const Header: React.FunctionComponent<HeaderProps> = () => {
     <Styled.Header>
       <Link href="/home" passHref>
         <a>
-          <Image width={80} height={80} src="/images/logo.png" alt="Orient by G.K." />
+          <Image height="600" src={logo} alt="Orient by G.K." objectFit="contain" />
         </a>
       </Link>
       <Styled.SocialMedia>

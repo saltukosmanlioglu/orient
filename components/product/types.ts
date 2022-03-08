@@ -1,6 +1,6 @@
 export interface ProductProps {
-  color: string
-  href: string
-  price: string
-  title: string
+  color: string;
+  href: string;
+  px: number;
+  title: string;
 }

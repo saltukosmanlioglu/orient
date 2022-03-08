@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Accordion = styled.div<{ color: string }>`
-  width: 100%;
+  width: 100% !important;
 `;
 
 export const Header = styled.div<{ color: string }>`
