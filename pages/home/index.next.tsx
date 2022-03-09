@@ -38,17 +38,6 @@ const Home: NextPage = () => {
     }
   }, []);
 
-  useEffect((): void => {
-    fetch(`${process.env.NEXT_APP_API}slider`, {
-      method: "GET",
-    })
-      .then((response) => response.json())
-      .then((data) => setSliderData(data))
-      .catch((error) => console.log(error));
-
-    localStorage.setItem("language", Language.Tr);
-  }, []);
-
   const getCategories = useCallback((): void => {
     if (refreshCount >= 0) {
       fetch(
@@ -69,25 +58,30 @@ const Home: NextPage = () => {
     }
   }, [refreshCount]);
 
+  useEffect((): void => getCategories(), [getCategories]);
+
   useEffect((): void => {
+    fetch(`${process.env.NEXT_APP_API}slider`, {
+      method: "GET",
+    })
+      .then((response) => response.json())
+      .then((data) => setSliderData(data))
+      .catch((error) => console.log(error));
+
     fetch(`${process.env.NEXT_APP_API}language`)
       .then((response) => response.json())
       .then((data) => setLanguages(data))
       .catch((error) => console.log(error));
-  }, []);
 
-  useEffect((): void => getCategories(), [getCategories]);
+    localStorage.setItem("language", Language.Tr);
+  }, []);
 
   return categories && sliderData ? (
     <Main title="Orient by G.K.">
-      {sliderData ? (
-        sliderData.length > 0 ? (
-          <Carousel data={sliderData} />
-        ) : (
-          <NoContent message="Slider verisi bulunamadı" />
-        )
+      {sliderData.length > 0 ? (
+        <Carousel data={sliderData} />
       ) : (
-        <Loader />
+        <NoContent message="Slider verisi bulunamadı" />
       )}
 
       <Styled.Lang>
@@ -120,60 +114,56 @@ const Home: NextPage = () => {
       </Styled.Lang>
 
       <Styled.Gutter>
-        {categories ? (
-          categories.length > 0 ? (
-            categories.map((category, index) => (
-              <Accordion
-                key={index}
-                color={category.color}
-                title={category.title}
-              >
-                <Styled.Gutter>
-                  {category.products &&
-                    category.products.map((product, productIndex) => (
-                      <Product
-                        key={productIndex}
-                        color={category.color}
-                        href={`/product/${product.id}`}
-                        px={24}
-                        title={product.title}
-                      />
-                    ))}
-                  {category.subCategories?.map(
-                    (subCategory, subCategoryIndex) => (
-                      <Accordion
-                        key={subCategoryIndex}
-                        color={
-                          subCategory.color ? subCategory.color : category.color
-                        }
-                        title={subCategory.title}
-                      >
-                        <Styled.Gutter>
-                          {subCategory.products.map((product, productIndex) => (
-                            <Product
-                              key={productIndex}
-                              color={
-                                subCategory.color
-                                  ? subCategory.color
-                                  : category.color
-                              }
-                              href={`/product/${product.id}`}
-                              px={48}
-                              title={product.title}
-                            />
-                          ))}
-                        </Styled.Gutter>
-                      </Accordion>
-                    )
-                  )}
-                </Styled.Gutter>
-              </Accordion>
-            ))
-          ) : (
-            <NoContent message="Kategori verisi bulunamadı" />
-          )
+        {categories.length > 0 ? (
+          categories.map((category, index) => (
+            <Accordion
+              key={index}
+              color={category.color}
+              title={category.title}
+            >
+              <Styled.Gutter>
+                {category.products &&
+                  category.products.map((product, productIndex) => (
+                    <Product
+                      key={productIndex}
+                      color={category.color}
+                      href={`/product/${product.id}`}
+                      px={24}
+                      title={product.title}
+                    />
+                  ))}
+                {category.subCategories?.map(
+                  (subCategory, subCategoryIndex) => (
+                    <Accordion
+                      key={subCategoryIndex}
+                      color={
+                        subCategory.color ? subCategory.color : category.color
+                      }
+                      title={subCategory.title}
+                    >
+                      <Styled.Gutter>
+                        {subCategory.products.map((product, productIndex) => (
+                          <Product
+                            key={productIndex}
+                            color={
+                              subCategory.color
+                                ? subCategory.color
+                                : category.color
+                            }
+                            href={`/product/${product.id}`}
+                            px={48}
+                            title={product.title}
+                          />
+                        ))}
+                      </Styled.Gutter>
+                    </Accordion>
+                  )
+                )}
+              </Styled.Gutter>
+            </Accordion>
+          ))
         ) : (
-          <Loader />
+          <NoContent message="Kategori verisi bulunamadı" />
         )}
       </Styled.Gutter>
 

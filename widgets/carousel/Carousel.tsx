@@ -19,14 +19,16 @@ const Carousel: React.FunctionComponent<CarouselProps> = ({ data }) => {
         swipeable
       >
         {data.map((item, index) => (
-          <div key={index} onClick={() => window.open(`/product/${item.productId}`, '_self')}>
-            <img
-              style={{ objectFit: "cover", backgroundColor: '#fff' }}
-              width="100%"
-              height={300}
-              src={`${process.env.NEXT_APP_API}file/serve/${item.image}`}
-            />
-          </div>
+          <Link key={index} href={`/product/${item.productId}`}>
+            <div>
+              <img
+                style={{ objectFit: "cover", backgroundColor: "#fff" }}
+                width="100%"
+                height={300}
+                src={`${process.env.NEXT_APP_API}file/serve/${item.image}`}
+              />
+            </div>
+          </Link>
         ))}
       </Banner>
       <Styled.Bar />
