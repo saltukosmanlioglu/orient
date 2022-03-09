@@ -102,8 +102,8 @@ const Home: NextPage = () => {
                   <Styled.LangButton onClick={selectLang}>TR</Styled.LangButton>
                 ) : null}
                 {languages &&
-                  languages.map((language) => (
-                    <Styled.LangButton onClick={selectLang}>
+                  languages.map((language, index) => (
+                    <Styled.LangButton key={index} onClick={selectLang}>
                       {language.language}
                     </Styled.LangButton>
                   ))}
