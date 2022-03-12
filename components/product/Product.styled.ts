@@ -27,4 +27,8 @@ export const Title = styled.div`
 export const Price = styled.div`
   width: 20%;
   text-align: right;
+
+  span {
+    transform: rotate(-90deg);
+  }
 `;

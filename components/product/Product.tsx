@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import ArrowRightIcon from "@atlaskit/icon/glyph/arrow-right";
+import HipchatChevronDownIcon from '@atlaskit/icon/glyph/hipchat/chevron-down'
 
 import { ProductProps } from "./types";
 import * as Styled from "./Product.styled";
@@ -18,8 +19,8 @@ const Product: React.FunctionComponent<ProductProps> = ({
           <p>{title}</p>
         </Styled.Title>
         <Styled.Price>
-          <ArrowRightIcon
-            label="arr§ow-right"
+          <HipchatChevronDownIcon
+            label="chevron-down"
             primaryColor={color}
             size="medium"
           />

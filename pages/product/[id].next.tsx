@@ -35,19 +35,21 @@ const Detail: React.FunctionComponent = () => {
   useEffect(() => getProduct(), [getProduct]);
 
   return data ? (
-    <Main title={`${data.title} | Orient by G.K.`}>
-      <img
-        width="100%"
-        src={`${process.env.NEXT_APP_API}file/serve/${data.image}`}
-        alt="Product image"
-      />
+    <Main header={{ goBack: true }} title={`${data.title} | Orient by G.K.`}>
+      {data.image && (
+        <img
+          width="100%"
+          src={`${process.env.NEXT_APP_API}file/serve/${data.image}`}
+          alt="Product image"
+        />
+      )}
       <div style={{ padding: "0 20px" }}>
         <ProductDetail
           description={data.description}
           price={data.price}
           title={data.title}
         />
-        <Allergens allergens={data.allergens} />
+        {data.allergens && <Allergens allergens={data.allergens} />}
       </div>
     </Main>
   ) : (

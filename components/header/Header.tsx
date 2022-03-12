@@ -1,33 +1,63 @@
-import React from 'react'
-import Image from 'next/image'
-import Link from 'next/link'
-import logo from '../../public/images/logo.png'
+import React from "react";
+import Image from "next/image";
+import Link from "next/link";
+import HipchatChevronDownIcon from '@atlaskit/icon/glyph/hipchat/chevron-down'
 
-import { HeaderProps } from './types'
-import * as Styled from './Header.styled'
+import logo from "../../public/images/logo.png";
 
-const Header: React.FunctionComponent<HeaderProps> = () => {
+import { HeaderProps } from "./types";
+import * as Styled from "./Header.styled";
+
+const Header: React.FunctionComponent<HeaderProps> = ({
+  goBack
+}) => {
   return (
     <Styled.Header>
+      {goBack && (
+        <Styled.GoBack>
+          <Link href="/">
+            <HipchatChevronDownIcon
+              label="chevron-down"
+              primaryColor="#000"
+              size="large"
+            />
+          </Link>
+        </Styled.GoBack>
+      )}
       <Link href="/home" passHref>
         <a>
-          <Image height="600" src={logo} alt="Orient by G.K." objectFit="contain" />
+          <Image
+            height="600"
+            src={logo}
+            alt="Orient by G.K."
+            objectFit="contain"
+          />
         </a>
       </Link>
       <Styled.SocialMedia>
         <Link href="https://www.facebook.com/orientbygk">
           <a target="_blank">
-            <Image height={20} width={10} src="/images/facebook.png" alt="Facebook logo" />
+            <Image
+              height={20}
+              width={10}
+              src="/images/facebook.png"
+              alt="Facebook logo"
+            />
           </a>
         </Link>
         <Link href="https://www.instagram.com/orientbygk">
           <a target="_blank">
-            <Image height={20} width={20} src="/images/instagram.png" alt="Instagram logo" />
+            <Image
+              height={20}
+              width={20}
+              src="/images/instagram.png"
+              alt="Instagram logo"
+            />
           </a>
         </Link>
       </Styled.SocialMedia>
     </Styled.Header>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

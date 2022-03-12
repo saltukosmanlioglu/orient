@@ -1,27 +1,26 @@
-import React from 'react'
-import Head from 'next/head'
+import React from "react";
+import Head from "next/head";
 
-import Footer from '@/components/footer'
-import Header from '@/components/header'
+import Header from "@/components/header";
+import Space from "@/components/space";
 
-import { MainProps } from './types'
+import { MainProps } from "./types";
 
 const Main: React.FunctionComponent<MainProps> = ({
   children,
-  title
+  header,
+  title,
 }) => {
   return (
     <React.Fragment>
       <Head>
         <title>{title}</title>
       </Head>
-      <Header />
-      <section style={{ marginBottom: 40 }}>
-        {children}
-      </section>
-      {/* <Footer /> */}
+      <Header {...header} />
+      <section style={{ marginBottom: 40 }}>{children}</section>
+      <Space height={200} />
     </React.Fragment>
-  )
-}
+  );
+};
 
-export default Main
+export default Main;
