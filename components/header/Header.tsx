@@ -15,7 +15,7 @@ const Header: React.FunctionComponent<HeaderProps> = ({
     <Styled.Header>
       {goBack && (
         <Styled.GoBack>
-          <Link href="/">
+          <Link href="/" passHref>
             <HipchatChevronDownIcon
               label="chevron-down"
               primaryColor="#000"
