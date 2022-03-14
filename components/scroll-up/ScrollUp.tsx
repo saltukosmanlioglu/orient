@@ -1,36 +1,38 @@
-import React, { useEffect, useState } from 'react'
-import HipchatChevronUpIcon from '@atlaskit/icon/glyph/hipchat/chevron-up'
+import React, { useEffect, useState } from "react";
+import HipchatChevronUpIcon from "@atlaskit/icon/glyph/hipchat/chevron-up";
 
-import { ScrollUpProps } from './types'
-import * as Styled from './ScrollUp.styled'
+import { ScrollUpProps } from "./types";
+import * as Styled from "./ScrollUp.styled";
 
-const ScrollUp: React.FunctionComponent<ScrollUpProps> = ({
-  color,
-}) => {
-  const [visible, setVisible] = useState<boolean>(false)
+const ScrollUp: React.FunctionComponent<ScrollUpProps> = () => {
+  const [visible, setVisible] = useState<boolean>(false);
 
   const handleClick = () => {
     window.scrollTo({
-      behavior: 'smooth',
-      top: 0
-    })
-  }
+      behavior: "smooth",
+      top: 0,
+    });
+  };
 
   useEffect(() => {
-    window.addEventListener('scroll', () => {
+    window.addEventListener("scroll", () => {
       if (window && window.scrollY > 350) {
-        setVisible(true)
+        setVisible(true);
       } else {
-        setVisible(false)
+        setVisible(false);
       }
-    })
-  }, [])
+    });
+  }, []);
 
   return visible ? (
-    <Styled.ScrollUp color={color} onClick={handleClick}>
-      <HipchatChevronUpIcon label="chevron-down" primaryColor={color} size="xlarge" />
+    <Styled.ScrollUp onClick={handleClick}>
+      <HipchatChevronUpIcon
+        label="chevron-down"
+        primaryColor="#465956"
+        size="large"
+      />
     </Styled.ScrollUp>
-  ) : null
-}
+  ) : null;
+};
 
-export default ScrollUp
+export default ScrollUp;

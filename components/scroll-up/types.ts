@@ -1,3 +1,1 @@
-export interface ScrollUpProps {
-  color: string
-}
+export interface ScrollUpProps {}

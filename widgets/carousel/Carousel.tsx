@@ -24,7 +24,7 @@ const Carousel: React.FunctionComponent<CarouselProps> = ({ data }) => {
               <img
                 style={{ objectFit: "cover", backgroundColor: "#fff" }}
                 width="100%"
-                height={300}
+                height={200}
                 src={`${process.env.NEXT_APP_API}file/serve/${item.image}`}
               />
             </div>

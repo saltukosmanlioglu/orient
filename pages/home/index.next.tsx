@@ -87,7 +87,7 @@ const Home: NextPage = () => {
       <Styled.Lang>
         <Styled.Detail>
           <b>Menü</b>
-          {/* <Styled.Langs onClick={() => setIsActive(!isActive)}>
+          <Styled.Langs onClick={() => setIsActive(!isActive)}>
             <p>{lang}</p>
             <Styled.Arrow isActive={isActive}>
               <HipchatChevronDownIcon
@@ -109,7 +109,7 @@ const Home: NextPage = () => {
                   ))}
               </Styled.Dropdown>
             )}
-          </Styled.Langs> */}
+          </Styled.Langs>
         </Styled.Detail>
       </Styled.Lang>
 
@@ -167,7 +167,7 @@ const Home: NextPage = () => {
         )}
       </Styled.Gutter>
 
-      <ScrollUp color="#2f5143" />
+      <ScrollUp />
     </Main>
   ) : (
     <Loader />

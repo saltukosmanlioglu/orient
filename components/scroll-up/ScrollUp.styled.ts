@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 
-export const ScrollUp = styled.button<{ color: string }>`
-  border: 1px solid ${({ color }) => color};
+export const ScrollUp = styled.button`
   background-color: #fff;
   position: fixed;
   bottom: 12px;

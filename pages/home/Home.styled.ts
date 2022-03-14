@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export const Gutter = styled.section`
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 20px;
 `
 
 export const Lang = styled.section`
@@ -16,6 +16,10 @@ export const Detail = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+
+  b {
+    color: #465956;
+  }
 `
 
 export const Langs = styled.div`
@@ -24,8 +28,6 @@ export const Langs = styled.div`
   flex-direction: row;
   align-items: center;
   position: relative;
-  border-bottom: 1px solid grey;
-  border-right: 1px solid grey;
 
   p {
     font-size: 13px;
