@@ -35,7 +35,7 @@ const Detail: React.FunctionComponent = () => {
   useEffect(() => getProduct(), [getProduct]);
 
   return data ? (
-    <Main header={{ goBack: true }} title={`${data.title} | Orient by G.K.`}>
+    <Main header={{ goBack: true }} title={`${data.title} | Orient QR Menü`}>
       {data.image && (
         <img
           width="100%"

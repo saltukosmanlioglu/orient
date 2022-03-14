@@ -7,7 +7,6 @@ import Accordion from "@/components/accordion";
 import Loader from "@/components/loader";
 import NoContent from "@/components/no-content";
 import Product from "@/components/product";
-import ScrollUp from "@/components/scroll-up";
 import Main from "@/layout/main";
 import Carousel, { CarouselDataProps } from "@/widgets/carousel";
 
@@ -77,7 +76,7 @@ const Home: NextPage = () => {
   }, []);
 
   return categories && sliderData ? (
-    <Main title="Orient by G.K.">
+    <Main title="Orient QR Menü">
       {sliderData.length > 0 ? (
         <Carousel data={sliderData} />
       ) : (
@@ -118,6 +117,7 @@ const Home: NextPage = () => {
           categories.map((category, index) => (
             <Accordion
               key={index}
+              px={28}
               color={category.color}
               title={category.title}
             >
@@ -139,6 +139,7 @@ const Home: NextPage = () => {
                       color={
                         subCategory.color ? subCategory.color : category.color
                       }
+                      px={28}
                       title={subCategory.title}
                     >
                       <Styled.Gutter>
@@ -166,8 +167,6 @@ const Home: NextPage = () => {
           <NoContent message="Kategori verisi bulunamadı" />
         )}
       </Styled.Gutter>
-
-      <ScrollUp />
     </Main>
   ) : (
     <Loader />

@@ -1,4 +1,5 @@
 export interface AccordionProps {
-  color: string
-  title: string
+  color: string;
+  px: number;
+  title: string;
 }

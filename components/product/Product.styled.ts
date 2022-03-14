@@ -1,7 +1,7 @@
 import styled from "styled-components";
-
+//calc(100vw - ${({ px }) => `${px}px`})
 export const Product = styled.a<{ color: string; px: number }>`
-  width: calc(100vw - ${({ px }) => `${px}px`});
+  width: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;

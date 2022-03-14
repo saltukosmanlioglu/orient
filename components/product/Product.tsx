@@ -1,7 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import ArrowRightIcon from "@atlaskit/icon/glyph/arrow-right";
-import HipchatChevronDownIcon from '@atlaskit/icon/glyph/hipchat/chevron-down'
+import HipchatChevronDownIcon from "@atlaskit/icon/glyph/hipchat/chevron-down";
 
 import { ProductProps } from "./types";
 import * as Styled from "./Product.styled";

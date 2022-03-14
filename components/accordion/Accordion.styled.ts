@@ -25,6 +25,6 @@ export const Arrow = styled.div<{ isActive: boolean }>`
     isActive ? "rotate(540deg)" : "rotate(0deg)"};
 `;
 
-export const Detail = styled.div`
-  padding: 12px;
+export const Detail = styled.div<{ px: number }>`
+  padding: ${({ px }) => `12px ${px}px`};
 `;
