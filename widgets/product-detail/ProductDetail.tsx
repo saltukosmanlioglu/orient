@@ -10,8 +10,6 @@ const ProductDetail: React.FunctionComponent<ProductDetailProps> = ({
 }) => {
   const isVirgule = price?.split?.(",");
 
-  console.log(isVirgule, 'sadas')
-
   return (
     <Styled.ProductDetail>
       <b>{title}</b>

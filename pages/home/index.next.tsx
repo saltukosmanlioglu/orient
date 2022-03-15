@@ -48,12 +48,8 @@ const Home: NextPage = () => {
         }
       )
         .then((response) => response.json())
-        .then((data) => {
-          setCategories(data);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+        .then((data) => setCategories(data))
+        .catch((error) => console.log(error));
     }
   }, [refreshCount]);
 
@@ -73,6 +69,18 @@ const Home: NextPage = () => {
       .catch((error) => console.log(error));
 
     localStorage.setItem("language", Language.Tr);
+  }, []);
+
+  useEffect(() => {
+    const scrollPosition = localStorage.getItem("scroll-position") || 0;
+    
+    setTimeout(() => {
+      window.scrollBy({
+        top: Number(scrollPosition),
+        left: 0,
+        behavior: "smooth",
+      });
+    }, 500);
   }, []);
 
   return categories && sliderData ? (
@@ -119,9 +127,12 @@ const Home: NextPage = () => {
             .map((category, index) => (
               <Accordion
                 key={index}
-                px={28}
                 color={category.color}
+                px={28}
                 title={category.title}
+                subCategoryList={category.subCategories?.map(
+                  (item) => item.title
+                )}
               >
                 <Styled.Gutter>
                   {category.products &&

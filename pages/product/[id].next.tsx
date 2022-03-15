@@ -33,8 +33,7 @@ const Detail: React.FunctionComponent = () => {
       {data.image && (
         <img
           width="100%"
-          src="https://www.klasiksanatlar.com/img/sayfalar/b/1_1598452306_resim.png"
-          // src={`${process.env.NEXT_APP_API}file/serve/${data.image}`}
+          src={`${process.env.NEXT_APP_API}file/serve/${data.image}`}
           alt="Product image"
           height={250}
           style={{ objectFit: "cover" }}
