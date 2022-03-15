@@ -8,13 +8,19 @@ const ProductDetail: React.FunctionComponent<ProductDetailProps> = ({
   price,
   title,
 }) => {
+  const isVirgule = price?.split?.(",");
+
+  console.log(isVirgule, 'sadas')
+
   return (
     <Styled.ProductDetail>
       <b>{title}</b>
       <Styled.Detail>
         {description && <p>{description}</p>}
-        <p style={{ textAlign: "right" }}>
-          {price}.<span style={{ fontSize: 11 }}>00 TL</span>{" "}
+        <p>
+          {price}
+          <span>.00</span>
+          <span> TL</span>{" "}
         </p>
         <Styled.Bar />
       </Styled.Detail>

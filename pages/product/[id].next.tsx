@@ -19,17 +19,11 @@ const Detail: React.FunctionComponent = () => {
       `${process.env.NEXT_APP_API}product/${id}?language=${localStorage.getItem(
         "language"
       )}`,
-      {
-        method: "GET",
-      }
+      { method: "GET" }
     )
       .then((response) => response.json())
-      .then((data) => {
-        setData(data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+      .then((data) => setData(data))
+      .catch((error) => console.log(error));
   }, [id]);
 
   useEffect(() => getProduct(), [getProduct]);
@@ -39,8 +33,11 @@ const Detail: React.FunctionComponent = () => {
       {data.image && (
         <img
           width="100%"
-          src={`${process.env.NEXT_APP_API}file/serve/${data.image}`}
+          src="https://www.klasiksanatlar.com/img/sayfalar/b/1_1598452306_resim.png"
+          // src={`${process.env.NEXT_APP_API}file/serve/${data.image}`}
           alt="Product image"
+          height={250}
+          style={{ objectFit: "cover" }}
         />
       )}
       <div style={{ padding: "0 20px" }}>

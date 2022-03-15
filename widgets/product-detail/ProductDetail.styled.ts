@@ -1,7 +1,7 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 export const ProductDetail = styled.div`
-  margin-top: 20px;
+  margin-top: 36px;
 
   b {
     width: 80%;
@@ -12,9 +12,9 @@ export const ProductDetail = styled.div`
 
   p {
     margin-top: 8px;
-    font-size: 13px;
+    font-size: 16px;
   }
-`
+`;
 
 export const Detail = styled.div`
   width: 100%;
@@ -23,13 +23,18 @@ export const Detail = styled.div`
   position: relative;
 
   p {
-    font-size: 13px;
+    font-size: 12px;
+    line-height: 2;
   }
 
-  &:nth-child(2) {
-    margin-left: auto;
+  p:nth-child(2) {
+    text-align: right;
+
+    span {
+      font-size: 10px;
+    }
   }
-`
+`;
 
 export const Bar = styled.div`
   position: absolute;
@@ -39,4 +44,4 @@ export const Bar = styled.div`
   width: 3px;
   background-color: #fff;
   z-index: 1000;
-`
+`;

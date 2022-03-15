@@ -40,9 +40,9 @@ const Home: NextPage = () => {
   const getCategories = useCallback((): void => {
     if (refreshCount >= 0) {
       fetch(
-        `${process.env.NEXT_APP_API}category?language=${localStorage.getItem(
-          "language"
-        )}`,
+        `${process.env.NEXT_APP_API}category?language=${
+          localStorage.getItem("language") || "TR"
+        }`,
         {
           method: "GET",
         }
@@ -114,55 +114,61 @@ const Home: NextPage = () => {
 
       <Styled.Gutter>
         {categories.length > 0 ? (
-          categories.map((category, index) => (
-            <Accordion
-              key={index}
-              px={28}
-              color={category.color}
-              title={category.title}
-            >
-              <Styled.Gutter>
-                {category.products &&
-                  category.products.map((product, productIndex) => (
-                    <Product
-                      key={productIndex}
-                      color={category.color}
-                      href={`/product/${product.id}`}
-                      px={24}
-                      title={product.title}
-                    />
-                  ))}
-                {category.subCategories?.map(
-                  (subCategory, subCategoryIndex) => (
-                    <Accordion
-                      key={subCategoryIndex}
-                      color={
-                        subCategory.color ? subCategory.color : category.color
-                      }
-                      px={28}
-                      title={subCategory.title}
-                    >
-                      <Styled.Gutter>
-                        {subCategory.products.map((product, productIndex) => (
-                          <Product
-                            key={productIndex}
-                            color={
-                              subCategory.color
-                                ? subCategory.color
-                                : category.color
-                            }
-                            href={`/product/${product.id}`}
-                            px={48}
-                            title={product.title}
-                          />
-                        ))}
-                      </Styled.Gutter>
-                    </Accordion>
-                  )
-                )}
-              </Styled.Gutter>
-            </Accordion>
-          ))
+          categories
+            .sort((a, b) => (a.order > b.order ? 1 : -1))
+            .map((category, index) => (
+              <Accordion
+                key={index}
+                px={28}
+                color={category.color}
+                title={category.title}
+              >
+                <Styled.Gutter>
+                  {category.products &&
+                    category.products
+                      ?.sort((a, b) => (a.order > b.order ? 1 : -1))
+                      .map((product, productIndex) => (
+                        <Product
+                          key={productIndex}
+                          color={category.color}
+                          href={`/product/${product.id}`}
+                          px={24}
+                          title={product.title}
+                        />
+                      ))}
+                  {category.subCategories
+                    ?.sort((a, b) => (a.order > b.order ? 1 : -1))
+                    ?.map((subCategory, subCategoryIndex) => (
+                      <Accordion
+                        key={subCategoryIndex}
+                        color={
+                          subCategory.color ? subCategory.color : category.color
+                        }
+                        px={28}
+                        title={subCategory.title}
+                      >
+                        <Styled.Gutter>
+                          {subCategory.products
+                            ?.sort((a, b) => (a.order > b.order ? 1 : -1))
+                            ?.map((product, productIndex) => (
+                              <Product
+                                key={productIndex}
+                                color={
+                                  subCategory.color
+                                    ? subCategory.color
+                                    : category.color
+                                }
+                                href={`/product/${product.id}`}
+                                px={48}
+                                title={product.title}
+                              />
+                            ))}
+                        </Styled.Gutter>
+                      </Accordion>
+                    ))}
+                </Styled.Gutter>
+              </Accordion>
+            ))
         ) : (
           <NoContent message="Kategori verisi bulunamadı" />
         )}
