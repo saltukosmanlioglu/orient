@@ -23,12 +23,14 @@ export const Detail = styled.div`
   position: relative;
 
   p {
-    font-size: 12px;
+    font-size: 17px;
     line-height: 2;
+    font-family: mrsea-roman-italic;
   }
 
   p:nth-child(2) {
     text-align: right;
+    font-size: 13px;
 
     span {
       font-size: 10px;
