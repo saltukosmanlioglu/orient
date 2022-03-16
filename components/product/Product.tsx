@@ -12,20 +12,22 @@ const Product: React.FunctionComponent<ProductProps> = ({
   title,
 }) => {
   return (
-    <Link href={href} passHref>
-      <Styled.Product px={px} color={color}>
-        <Styled.Title style={{ width: "80%" }}>
-          <p>{title}</p>
-        </Styled.Title>
-        <Styled.Price>
-          <HipchatChevronDownIcon
-            label="chevron-down"
-            primaryColor={color}
-            size="medium"
-          />
-        </Styled.Price>
-      </Styled.Product>
-    </Link>
+    <div style={{ width: "100%" }}>
+      <Link href={href} passHref>
+        <Styled.Product px={px} color={color}>
+          <Styled.Title style={{ width: "80%" }}>
+            <p>{title}</p>
+          </Styled.Title>
+          <Styled.Price>
+            <HipchatChevronDownIcon
+              label="chevron-down"
+              primaryColor={color}
+              size="medium"
+            />
+          </Styled.Price>
+        </Styled.Product>
+      </Link>
+    </div>
   );
 };
 
