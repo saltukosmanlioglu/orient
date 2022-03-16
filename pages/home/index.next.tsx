@@ -2,11 +2,10 @@ import React, { useCallback, useEffect, useState } from "react";
 import { NextPage } from "next";
 import HipchatChevronDownIcon from "@atlaskit/icon/glyph/hipchat/chevron-down";
 
-import { Language } from "@/app/global";
 import Accordion from "@/components/accordion";
-import Loader from "@/components/loader";
 import NoContent from "@/components/no-content";
 import Product from "@/components/product";
+import Spinner from "@/components/spinner";
 import Main from "@/layout/main";
 import Carousel, { CarouselDataProps } from "@/widgets/carousel";
 
@@ -14,28 +13,19 @@ import { CategoriesResponse, LanguagesResponse } from "./types";
 import * as Styled from "./Home.styled";
 
 const Home: NextPage = () => {
-  const [categories, setCategories] = useState<CategoriesResponse>([]);
-  const [languages, setLanguages] = useState<LanguagesResponse>([]);
-  const [sliderData, setSliderData] = useState<Array<CarouselDataProps>>([]);
+  const [categories, setCategories] = useState<CategoriesResponse>();
+  const [languages, setLanguages] = useState<LanguagesResponse>();
+  const [sliderData, setSliderData] = useState<Array<CarouselDataProps>>();
 
+  const [activeLang, setActiveLang] = useState<string>("TR");
   const [isActive, setIsActive] = useState<boolean>(false);
-  const [lang, setLang] = useState<Language>(Language.Tr);
-
   const [refreshCount, setRefreshCount] = useState<number>(0);
 
-  const setLanguage = (activeLang: Language): void => {
-    setLang(activeLang);
-    localStorage.setItem("language", activeLang);
+  const selectLang = (language: string) => {
+    localStorage.setItem("language", language);
+    setActiveLang(language);
     setRefreshCount((c) => c + 1);
   };
-
-  const selectLang = useCallback((): void => {
-    if (localStorage.getItem("language") === Language.Tr) {
-      setLanguage(Language.Eng);
-    } else {
-      setLanguage(Language.Tr);
-    }
-  }, []);
 
   const getCategories = useCallback((): void => {
     if (refreshCount >= 0) {
@@ -53,27 +43,25 @@ const Home: NextPage = () => {
     }
   }, [refreshCount]);
 
-  useEffect((): void => getCategories(), [getCategories]);
-
-  useEffect((): void => {
+  const getSliderData = () => {
     fetch(`${process.env.NEXT_APP_API}slider`, {
       method: "GET",
     })
       .then((response) => response.json())
       .then((data) => setSliderData(data))
       .catch((error) => console.log(error));
+  };
 
+  const getLanguageData = () => {
     fetch(`${process.env.NEXT_APP_API}language`)
       .then((response) => response.json())
       .then((data) => setLanguages(data))
       .catch((error) => console.log(error));
+  };
 
-    localStorage.setItem("language", Language.Tr);
-  }, []);
-
-  useEffect(() => {
+  const getScrollPosition = () => {
     const scrollPosition = localStorage.getItem("scroll-position") || 0;
-    
+
     setTimeout(() => {
       window.scrollBy({
         top: Number(scrollPosition),
@@ -81,112 +69,135 @@ const Home: NextPage = () => {
         behavior: "smooth",
       });
     }, 500);
+  };
+
+  useEffect((): void => getCategories(), [getCategories]);
+
+  useEffect((): void => {
+    getLanguageData();
+    getSliderData();
+    getScrollPosition();
   }, []);
 
-  return categories && sliderData ? (
+  return (
     <Main title="Orient QR Menü">
-      {sliderData.length > 0 ? (
-        <Carousel data={sliderData} />
+      {sliderData ? (
+        sliderData.length > 0 ? (
+          <Carousel data={sliderData} />
+        ) : (
+          <NoContent message="Slider verisi bulunamadı" />
+        )
       ) : (
-        <NoContent message="Slider verisi bulunamadı" />
+        <Spinner />
       )}
 
       <Styled.Lang>
         <Styled.Detail>
           <b>Menü</b>
-          <Styled.Langs onClick={() => setIsActive(!isActive)}>
-            <p>{lang}</p>
-            <Styled.Arrow isActive={isActive}>
-              <HipchatChevronDownIcon
-                label="chevron-down"
-                primaryColor="#2f5143"
-                size="medium"
-              />
-            </Styled.Arrow>
-            {isActive && (
-              <Styled.Dropdown>
-                {languages.length > 0 ? (
-                  <Styled.LangButton onClick={selectLang}>TR</Styled.LangButton>
-                ) : null}
-                {languages &&
-                  languages.map((language, index) => (
-                    <Styled.LangButton key={index} onClick={selectLang}>
-                      {language.language}
+          <Styled.Lang>
+            <Styled.Langs onClick={() => setIsActive(!isActive)}>
+              <p>{activeLang}</p>
+              <Styled.Arrow isActive={isActive}>
+                <HipchatChevronDownIcon
+                  label="chevron-down"
+                  primaryColor="#2f5143"
+                  size="medium"
+                />
+              </Styled.Arrow>
+              {isActive && (
+                <Styled.Dropdown>
+                  {languages && languages.length > 0 ? (
+                    <Styled.LangButton onClick={() => selectLang("TR")}>
+                      TR
                     </Styled.LangButton>
-                  ))}
-              </Styled.Dropdown>
-            )}
-          </Styled.Langs>
+                  ) : null}
+                  {languages &&
+                    languages.map((language) => (
+                      <Styled.LangButton
+                        key={language.id}
+                        onClick={() => selectLang(language.language)}
+                      >
+                        {language.language}
+                      </Styled.LangButton>
+                    ))}
+                </Styled.Dropdown>
+              )}
+            </Styled.Langs>
+          </Styled.Lang>
         </Styled.Detail>
       </Styled.Lang>
 
       <Styled.Gutter>
-        {categories.length > 0 ? (
-          categories
-            .sort((a, b) => (a.order > b.order ? 1 : -1))
-            .map((category, index) => (
-              <Accordion
-                key={index}
-                color={category.color}
-                px={28}
-                title={category.title}
-                subCategoryList={category.subCategories?.map(
-                  (item) => item.title
-                )}
-              >
-                <Styled.Gutter>
-                  {category.products &&
-                    category.products
+        {categories ? (
+          categories.length > 0 ? (
+            categories
+              .sort((a, b) => (a.order > b.order ? 1 : -1))
+              .map((category, index) => (
+                <Accordion
+                  key={index}
+                  color={category.color}
+                  px={28}
+                  title={category.title}
+                  subCategoryList={category.subCategories?.map(
+                    (item) => item.title
+                  )}
+                >
+                  <Styled.Gutter>
+                    {category.products &&
+                      category.products
+                        ?.sort((a, b) => (a.order > b.order ? 1 : -1))
+                        .map((product, productIndex) => (
+                          <Product
+                            key={productIndex}
+                            color={category.color}
+                            href={`/product/${product.id}`}
+                            px={24}
+                            title={product.title}
+                          />
+                        ))}
+                    {category.subCategories
                       ?.sort((a, b) => (a.order > b.order ? 1 : -1))
-                      .map((product, productIndex) => (
-                        <Product
-                          key={productIndex}
-                          color={category.color}
-                          href={`/product/${product.id}`}
-                          px={24}
-                          title={product.title}
-                        />
+                      ?.map((subCategory, subCategoryIndex) => (
+                        <Accordion
+                          key={subCategoryIndex}
+                          color={
+                            subCategory.color
+                              ? subCategory.color
+                              : category.color
+                          }
+                          px={28}
+                          title={subCategory.title}
+                        >
+                          <Styled.Gutter>
+                            {subCategory.products
+                              ?.sort((a, b) => (a.order > b.order ? 1 : -1))
+                              ?.map((product, productIndex) => (
+                                <Product
+                                  key={productIndex}
+                                  color={
+                                    subCategory.color
+                                      ? subCategory.color
+                                      : category.color
+                                  }
+                                  href={`/product/${product.id}`}
+                                  px={48}
+                                  title={product.title}
+                                />
+                              ))}
+                          </Styled.Gutter>
+                        </Accordion>
                       ))}
-                  {category.subCategories
-                    ?.sort((a, b) => (a.order > b.order ? 1 : -1))
-                    ?.map((subCategory, subCategoryIndex) => (
-                      <Accordion
-                        key={subCategoryIndex}
-                        color={
-                          subCategory.color ? subCategory.color : category.color
-                        }
-                        px={28}
-                        title={subCategory.title}
-                      >
-                        <Styled.Gutter>
-                          {subCategory.products
-                            ?.sort((a, b) => (a.order > b.order ? 1 : -1))
-                            ?.map((product, productIndex) => (
-                              <Product
-                                key={productIndex}
-                                color={
-                                  subCategory.color
-                                    ? subCategory.color
-                                    : category.color
-                                }
-                                href={`/product/${product.id}`}
-                                px={48}
-                                title={product.title}
-                              />
-                            ))}
-                        </Styled.Gutter>
-                      </Accordion>
-                    ))}
-                </Styled.Gutter>
-              </Accordion>
-            ))
+                  </Styled.Gutter>
+                </Accordion>
+              ))
+          ) : (
+            <NoContent message="Kategori verisi bulunamadı" />
+          )
         ) : (
-          <NoContent message="Kategori verisi bulunamadı" />
+          <Spinner />
         )}
       </Styled.Gutter>
     </Main>
-  ) : (
-    <Loader />
   );
 };
 

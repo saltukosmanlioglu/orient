@@ -7,7 +7,7 @@ export const Gutter = styled.section`
 `
 
 export const Lang = styled.section`
-  margin: 12px 0px;
+  margin: 4px 0px;
   padding: 8px 12px;
 `
 

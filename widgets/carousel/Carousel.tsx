@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Carousel as Banner } from "react-responsive-carousel";
 
 import { CarouselProps } from "./types";
@@ -20,14 +21,13 @@ const Carousel: React.FunctionComponent<CarouselProps> = ({ data }) => {
       >
         {data.map((item, index) => (
           <Link key={index} href={`/product/${item.product.id}`}>
-            <div>
-              <img
-                style={{ objectFit: "cover", backgroundColor: "#fff" }}
-                width="100%"
-                height={200}
-                src={`${process.env.NEXT_APP_API}file/serve/${item.image}`}
+            <Styled.ProductImage>
+              <Image
+                objectFit="cover"
+                src={`${process.env.NEXT_APP_FILE_SERVE}${item.image}`}
+                layout="fill"
               />
-            </div>
+            </Styled.ProductImage>
           </Link>
         ))}
       </Banner>

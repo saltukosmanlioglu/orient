@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import Image from "next/image";
 
 import Loader from "@/components/loader";
 import Main from "@/layout/main";
@@ -7,6 +8,7 @@ import Allergens from "@/widgets/allergens";
 import ProductDetail from "@/widgets/product-detail";
 
 import { ProductDetailProps } from "./types";
+import * as Styled from './Product.styled'
 
 const Detail: React.FunctionComponent = () => {
   const [data, setData] = useState<ProductDetailProps>();
@@ -31,13 +33,14 @@ const Detail: React.FunctionComponent = () => {
   return data ? (
     <Main header={{ goBack: true }} title={`${data.title} | Orient QR Menü`}>
       {data.image && (
-        <img
-          width="100%"
-          src={`${process.env.NEXT_APP_API}file/serve/${data.image}`}
-          alt="Product image"
-          height={250}
-          style={{ objectFit: "cover" }}
-        />
+        <Styled.ProductImage>
+          <Image
+            src={`${process.env.NEXT_APP_FILE_SERVE}${data.image}`}
+            alt="Product image"
+            objectFit="cover"
+            layout="fill"
+          />
+        </Styled.ProductImage>
       )}
       <div style={{ padding: "0 20px" }}>
         <ProductDetail

@@ -2,7 +2,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   env: {
-    NEXT_APP_API: 'http://menu.orientbygk.com/api/web/'
+    NEXT_APP_API: 'http://menu.orientbygk.com/api/web/',
+    NEXT_APP_FILE_SERVE: 'http://menu.orientbygk.com/api/web/file/serve/'
+  },
+  images: {
+    domains: ['menu.orientbygk.com'],
   },
   reactStrictMode: true,
   pageExtensions: ["next.tsx"],

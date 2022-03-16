@@ -31,3 +31,9 @@ export const Bar = styled.div`
   height: 2px; 
   background-color: #3d5955;
 `
+
+export const ProductImage = styled.div`
+  width: 100%;
+  height: 250px;
+  position: relative;
+`
