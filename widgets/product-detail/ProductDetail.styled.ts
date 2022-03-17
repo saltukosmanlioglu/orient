@@ -27,12 +27,14 @@ export const Detail = styled.div`
     line-height: 2;
     font-family: mrsea-roman-italic;
   }
-
+  
   p:nth-child(2) {
     text-align: right;
-    font-size: 13px;
-
+    font-size: 17px;
+    font-family: mrsea-roman-italic;
+    
     span {
+      font-family: mrsea-roman-italic;
       font-size: 10px;
     }
   }

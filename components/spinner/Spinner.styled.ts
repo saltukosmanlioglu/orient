@@ -6,4 +6,8 @@ export const Spinner = styled.div`
   align-items: center;
   justify-content: center;
   padding: 40px 0px;
+
+  p {
+    margin-top: 12px;
+  }
 `;
