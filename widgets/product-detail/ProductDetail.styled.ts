@@ -1,11 +1,11 @@
 import styled from "styled-components";
 
-export const ProductDetail = styled.div`
+export const ProductDetail = styled.div<{ color: string }>`
   margin-top: 36px;
 
   b {
     width: 80%;
-    color: #465957;
+    color: ${({ color }) => color};
     font-size: 17px;
     display: block;
   }
@@ -16,9 +16,9 @@ export const ProductDetail = styled.div`
   }
 `;
 
-export const Detail = styled.div`
+export const Detail = styled.div<{ color: string }>`
   width: 100%;
-  border: 1px solid #3d5955;
+  border: 1px solid ${({ color }) => color};
   padding: 12px;
   position: relative;
 
@@ -26,17 +26,20 @@ export const Detail = styled.div`
     font-size: 17px;
     line-height: 2;
     font-family: mrsea-roman-italic;
+    color: ${({ color }) => color};
   }
-  
-  p:nth-child(2) {
-    text-align: right;
-    font-size: 17px;
+`;
+
+export const Price = styled.p<{ color: string }>`
+  text-align: right;
+  font-size: 17px;
+  font-family: mrsea-roman-italic;
+  color: ${({ color }) => color};
+
+  span {
     font-family: mrsea-roman-italic;
-    
-    span {
-      font-family: mrsea-roman-italic;
-      font-size: 10px;
-    }
+    color: ${({ color }) => color};
+    font-size: 10px;
   }
 `;
 

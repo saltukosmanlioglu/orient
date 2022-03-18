@@ -4,6 +4,7 @@ import { ProductDetailProps } from "./types";
 import * as Styled from "./ProductDetail.styled";
 
 const ProductDetail: React.FunctionComponent<ProductDetailProps> = ({
+  color,
   description,
   price,
   title,
@@ -11,15 +12,14 @@ const ProductDetail: React.FunctionComponent<ProductDetailProps> = ({
   const isVirgule = price?.split?.(",");
 
   return (
-    <Styled.ProductDetail>
+    <Styled.ProductDetail color={color}>
       <b>{title}</b>
-      <Styled.Detail>
+      <Styled.Detail color={color}>
         {description && <p>{description}</p>}
-        <p>
-          {isVirgule?.[0]},
-          <span>{isVirgule?.[1]}</span>
+        <Styled.Price color={color}>
+          {isVirgule?.[0]},<span>{isVirgule?.[1]}</span>
           <span> TL</span>{" "}
-        </p>
+        </Styled.Price>
         <Styled.Bar />
       </Styled.Detail>
     </Styled.ProductDetail>
