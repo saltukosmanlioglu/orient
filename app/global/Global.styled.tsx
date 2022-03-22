@@ -7,11 +7,11 @@ const GlobalStyle = createGlobalStyle`
   }
   @font-face {
     font-family: mrsea-bold;
-    src: url(/font/MRSEA-kalin.TTF);
+    src: url(/font/MrsEavBol.ttf);
   }
   @font-face {
     font-family: mrsea-roman-italic;
-    src: url(/font/MRSEA-roman-italic.TTF);
+    src: url(/font/MrsEavRom.ttf);
   }
 
   * {
