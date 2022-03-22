@@ -8,7 +8,6 @@ export const Product = styled.a<{ color: string; px: number }>`
   justify-content: space-between;
   padding: 12px;
   border-bottom: 1px solid ${({ color }) => color};
-  border-right: 1px solid ${({ color }) => color};
 
   p {
     font-size: 13px;
