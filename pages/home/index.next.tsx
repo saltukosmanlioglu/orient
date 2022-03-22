@@ -60,7 +60,7 @@ const Home: NextPage = () => {
   };
 
   const getScrollPosition = () => {
-    const scrollPosition = localStorage.getItem("scroll-position") || 0;
+    const scrollPosition = sessionStorage.getItem("scroll-position") || 0;
 
     setTimeout(() => {
       window.scrollBy({

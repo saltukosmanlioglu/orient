@@ -23,7 +23,7 @@ const Accordion: React.FunctionComponent<AccordionProps> = ({
   const handleClick = () => {
     if (!isActive) {
       localStorage.setItem("active-accordion-id", title);
-      localStorage.setItem("scroll-position", window.pageYOffset.toString());
+      sessionStorage.setItem("scroll-position", window.pageYOffset.toString());
     }
     setIsActive(!isActive);
   };

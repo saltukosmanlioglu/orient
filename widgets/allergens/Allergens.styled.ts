@@ -7,10 +7,12 @@ export const Allergens = styled.div`
   b {
     color: #465957;
     font-size: 17px;
+    font-family: mrsea-bold;
   }
 
   p {
     margin-top: 8px;
-    font-size: 13px;
+    font-size: 17px;
+    font-family: mrsea-italic;
   }
 `

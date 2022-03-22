@@ -25,7 +25,7 @@ export const Detail = styled.div<{ color: string }>`
   p {
     font-size: 17px;
     line-height: 2;
-    font-family: mrsea-roman-italic;
+    font-family: mrsea-italic;
     color: ${({ color }) => color};
   }
 `;
@@ -33,11 +33,11 @@ export const Detail = styled.div<{ color: string }>`
 export const Price = styled.p<{ color: string }>`
   text-align: right;
   font-size: 17px;
-  font-family: mrsea-roman-italic;
+  font-family: mrsea-roman;
   color: ${({ color }) => color};
 
   span {
-    font-family: mrsea-roman-italic;
+    font-family: mrsea-roman;
     color: ${({ color }) => color};
     font-size: 10px;
   }
