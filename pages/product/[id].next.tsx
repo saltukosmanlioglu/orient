@@ -8,7 +8,7 @@ import Allergens from "@/widgets/allergens";
 import ProductDetail from "@/widgets/product-detail";
 
 import { ProductDetailProps } from "./types";
-import * as Styled from './Product.styled'
+import * as Styled from "./Product.styled";
 
 const Detail: React.FunctionComponent = () => {
   const [data, setData] = useState<ProductDetailProps>();
@@ -17,15 +17,17 @@ const Detail: React.FunctionComponent = () => {
   const { id } = router.query;
 
   const getProduct = useCallback(() => {
-    fetch(
-      `${process.env.NEXT_APP_API}product/${id}?language=${localStorage.getItem(
-        "language"
-      )}`,
-      { method: "GET" }
-    )
-      .then((response) => response.json())
-      .then((data) => setData(data))
-      .catch((error) => console.log(error));
+    setTimeout(() => {
+      fetch(
+        `${
+          process.env.NEXT_APP_API
+        }product/${id}?language=${localStorage.getItem("language")}`,
+        { method: "GET" }
+      )
+        .then((response) => response.json())
+        .then((data) => setData(data))
+        .catch((error) => console.log(error));
+    }, 1500);
   }, [id]);
 
   useEffect(() => getProduct(), [getProduct]);
@@ -41,6 +43,13 @@ const Detail: React.FunctionComponent = () => {
             layout="fill"
           />
         </Styled.ProductImage>
+        // <img
+        //   src={`${process.env.NEXT_APP_FILE_SERVE}${data.image}`}
+        //   alt="Product image"
+        //   width={"100%"}
+        //   height={250}
+        //   style={{ objectFit: "cover" }}
+        // />
       )}
       <div style={{ padding: "0 40px" }}>
         <ProductDetail
