@@ -45,7 +45,7 @@ const Detail: React.FunctionComponent = () => {
           />
         </Styled.ProductImage>
       )}
-      <div style={{ padding: "0 20px" }}>
+      <div style={{ padding: "0 40px" }}>
         <ProductDetail
           color={data?.category?.color}
           description={data.description}

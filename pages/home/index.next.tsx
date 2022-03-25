@@ -166,7 +166,7 @@ const Home: NextPage = () => {
                               ? subCategory.color
                               : category.color
                           }
-                          px={28}
+                          px={0}
                           title={subCategory.title}
                         >
                           <Styled.Gutter>

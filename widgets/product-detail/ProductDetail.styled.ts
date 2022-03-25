@@ -55,6 +55,7 @@ export const Bar = styled.div`
 `;
 
 export const Header = styled.div`
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -62,11 +63,12 @@ export const Header = styled.div`
 
   b {
     margin-top: 4.5px;
-    margin-left: 4px;
   }
 `;
 
 export const GoBack = styled.div`
   transform: rotate(90deg);
   z-index: 10000;
+  position: absolute;
+  left: -16px;
 `;

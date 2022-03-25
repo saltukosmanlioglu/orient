@@ -17,7 +17,7 @@ const ProductDetail: React.FunctionComponent<ProductDetailProps> = ({
     <Styled.ProductDetail color={color}>
       <Styled.Header>
         <Styled.GoBack>
-          <Link href="/home" passHref>
+          <Link href="/home">
             <a>
               <HipchatChevronDownIcon
                 label="chevron-down"
