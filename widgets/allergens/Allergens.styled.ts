@@ -7,7 +7,7 @@ export const Allergens = styled.div`
   b {
     color: #465957;
     font-size: 17px;
-    font-family: mrsea-bold;
+    font-family: mrsea-bold-italic;
   }
 
   p {

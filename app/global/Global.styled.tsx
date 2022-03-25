@@ -7,19 +7,19 @@ const GlobalStyle = createGlobalStyle`
   }
   @font-face {
     font-family: mrsea-bold;
-    src: url(/font/MrsEavBol.ttf);
+    src: url(/font/MrsEaves.Bold.ttf);
   }
   @font-face {
     font-family: mrsea-italic;
-    src: url(/font/MrsEavIta.ttf);
+    src: url(/font/MrsEaves.Italic.ttf);
   }
   @font-face {
     font-family: mrsea-bold-italic;
-    src: url(/font/MrsEavBolIta.ttf);
+    src: url(/font/MrsEaves.BoldItalic.ttf);
   }
   @font-face {
     font-family: mrsea-roman;
-    src: url(/font/MrsEavRom.ttf);
+    src: url(/font/MrsEaves.Roman.ttf);
   }
 
   * {

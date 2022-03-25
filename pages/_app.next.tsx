@@ -10,7 +10,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <React.Fragment>
       <Head>
-        <link rel="icon" type="image/jpeg" href="/images/logo.png" />
+        <link rel="icon" type="image/png" href="/images/logo.png" />
       </Head>
       <Component {...pageProps} />
       <GlobalStyles />

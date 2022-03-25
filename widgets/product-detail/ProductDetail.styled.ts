@@ -33,11 +33,11 @@ export const Detail = styled.div<{ color: string }>`
 export const Price = styled.p<{ color: string }>`
   text-align: right;
   font-size: 17px;
-  font-family: mrsea-roman;
+  font-family: mrsea-roman !important;
   color: ${({ color }) => color};
 
   span {
-    font-family: mrsea-roman;
+    font-family: mrsea-roman !important;
     color: ${({ color }) => color};
     font-size: 10px;
   }
