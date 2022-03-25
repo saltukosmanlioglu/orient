@@ -1,3 +1,1 @@
-export interface HeaderProps {
-  goBack?: boolean;
-}
+export interface HeaderProps {}

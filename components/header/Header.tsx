@@ -1,29 +1,15 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import HipchatChevronDownIcon from '@atlaskit/icon/glyph/hipchat/chevron-down'
 
 import logo from "../../public/images/logo.png";
 
 import { HeaderProps } from "./types";
 import * as Styled from "./Header.styled";
 
-const Header: React.FunctionComponent<HeaderProps> = ({
-  goBack
-}) => {
+const Header: React.FunctionComponent<HeaderProps> = () => {
   return (
     <Styled.Header>
-      {goBack && (
-        <Styled.GoBack>
-          <Link href="/" passHref>
-            <HipchatChevronDownIcon
-              label="chevron-down"
-              primaryColor="#000"
-              size="large"
-            />
-          </Link>
-        </Styled.GoBack>
-      )}
       <Link href="/home" passHref>
         <a>
           <Image

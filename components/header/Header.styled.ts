@@ -18,19 +18,4 @@ export const SocialMedia = styled.div`
   position: absolute;
   right: 20px;
   bottom: 0;
-
-  a {
-    // border: 1px solid red;
-  }
-`;
-
-export const GoBack = styled.div`
-  width: 60px;
-  height: 60px;
-  position: absolute;
-  left: 0;
-  transform: rotate(90deg);
-  display: flex;
-  align-items: center;
-  justify-content: center;
 `;

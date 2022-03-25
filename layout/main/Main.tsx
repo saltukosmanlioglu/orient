@@ -9,7 +9,6 @@ import { MainProps } from "./types";
 
 const Main: React.FunctionComponent<MainProps> = ({
   children,
-  header,
   title,
 }) => {
   return (
@@ -17,7 +16,7 @@ const Main: React.FunctionComponent<MainProps> = ({
       <Head>
         <title>{title}</title>
       </Head>
-      <Header {...header} />
+      <Header />
       <section style={{ marginBottom: 40 }}>{children}</section>
       <ScrollUp />
       <Space height={200} />

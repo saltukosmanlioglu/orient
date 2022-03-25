@@ -17,23 +17,23 @@ const Detail: React.FunctionComponent = () => {
   const { id } = router.query;
 
   const getProduct = useCallback(() => {
-    setTimeout(() => {
-      fetch(
-        `${
-          process.env.NEXT_APP_API
-        }product/${id}?language=${localStorage.getItem("language")}`,
-        { method: "GET" }
-      )
-        .then((response) => response.json())
-        .then((data) => setData(data))
-        .catch((error) => console.log(error));
-    }, 1500);
+    fetch(
+      `${process.env.NEXT_APP_API}product/${id}?language=${localStorage.getItem(
+        "language"
+      )}`,
+      { method: "GET" }
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        setData(data);
+      })
+      .catch((error) => console.log(error));
   }, [id]);
 
   useEffect(() => getProduct(), [getProduct]);
 
   return data ? (
-    <Main header={{ goBack: true }} title={`${data.title} | Orient QR Menü`}>
+    <Main title={`${data.title} | Orient QR Menü`}>
       {data.image && (
         <Styled.ProductImage>
           <Image
@@ -41,17 +41,11 @@ const Detail: React.FunctionComponent = () => {
             alt="Product image"
             objectFit="cover"
             layout="fill"
+            priority
           />
         </Styled.ProductImage>
-        // <img
-        //   src={`${process.env.NEXT_APP_FILE_SERVE}${data.image}`}
-        //   alt="Product image"
-        //   width={"100%"}
-        //   height={250}
-        //   style={{ objectFit: "cover" }}
-        // />
       )}
-      <div style={{ padding: "0 40px" }}>
+      <div style={{ padding: "0 20px" }}>
         <ProductDetail
           color={data?.category?.color}
           description={data.description}

@@ -19,12 +19,13 @@ export const ProductDetail = styled.div<{ color: string }>`
 export const Detail = styled.div<{ color: string }>`
   width: 100%;
   border: 1px solid ${({ color }) => color};
+  border-right: 0;
   padding: 12px;
   position: relative;
 
   p {
     font-size: 17px;
-    line-height: 2;
+    line-height: 1.5;
     font-family: mrsea-italic;
     color: ${({ color }) => color};
   }
@@ -45,10 +46,27 @@ export const Price = styled.p<{ color: string }>`
 
 export const Bar = styled.div`
   position: absolute;
-  right: -2px;
-  top: -2px;
-  height: 70%;
-  width: 3px;
-  background-color: #fff;
+  right: 0;
+  bottom: 0;
+  height: 45px;
+  width: 1px;
+  background-color: #000;
   z-index: 1000;
+`;
+
+export const Header = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 -22px;
+
+  b {
+    margin-top: 4.5px;
+    margin-left: 4px;
+  }
+`;
+
+export const GoBack = styled.div`
+  transform: rotate(90deg);
+  z-index: 10000;
 `;

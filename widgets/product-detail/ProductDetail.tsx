@@ -1,4 +1,6 @@
 import React from "react";
+import Link from "next/link";
+import HipchatChevronDownIcon from "@atlaskit/icon/glyph/hipchat/chevron-down";
 
 import { ProductDetailProps } from "./types";
 import * as Styled from "./ProductDetail.styled";
@@ -13,7 +15,20 @@ const ProductDetail: React.FunctionComponent<ProductDetailProps> = ({
 
   return (
     <Styled.ProductDetail color={color}>
-      <b>{title}</b>
+      <Styled.Header>
+        <Styled.GoBack>
+          <Link href="/" passHref>
+            <a href="/">
+              <HipchatChevronDownIcon
+                label="chevron-down"
+                primaryColor="#000"
+                size="large"
+              />
+            </a>
+          </Link>
+        </Styled.GoBack>
+        <b>{title}</b>
+      </Styled.Header>
       <Styled.Detail color={color}>
         {description && <p>{description}</p>}
         <Styled.Price color={color}>

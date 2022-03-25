@@ -26,6 +26,7 @@ const Carousel: React.FunctionComponent<CarouselProps> = ({ data }) => {
                 objectFit="cover"
                 src={`${process.env.NEXT_APP_FILE_SERVE}${item.image}`}
                 layout="fill"
+                priority
               />
             </Styled.ProductImage>
           </Link>
