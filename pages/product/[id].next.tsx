@@ -17,17 +17,19 @@ const Detail: React.FunctionComponent = () => {
   const { id } = router.query;
 
   const getProduct = useCallback(() => {
-    fetch(
-      `${process.env.NEXT_APP_API}product/${id}?language=${localStorage.getItem(
-        "language"
-      )}`,
-      { method: "GET" }
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        setData(data);
-      })
-      .catch((error) => console.log(error));
+    if (id) {
+      fetch(
+        `${
+          process.env.NEXT_APP_API
+        }product/${id}?language=${localStorage.getItem("language")}`,
+        { method: "GET" }
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          setData(data);
+        })
+        .catch((error) => console.log(error));
+    }
   }, [id]);
 
   useEffect(() => getProduct(), [getProduct]);
