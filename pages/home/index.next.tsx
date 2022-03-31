@@ -189,9 +189,8 @@ const Home: NextPage = () => {
                                       : category.color
                                   }
                                   href={
-                                    localStorage.getItem("language") === "TR"
-                                      ? `/product/${product.id}`
-                                      : `/product/${product.productId}`
+                                    `/product/${product.id}` ||
+                                    `/product/${product.productId}`
                                   }
                                   px={48}
                                   title={product.title}
