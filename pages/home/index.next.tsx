@@ -17,7 +17,7 @@ const Home: NextPage = () => {
   const [languages, setLanguages] = useState<LanguagesResponse>();
   const [sliderData, setSliderData] = useState<Array<CarouselDataProps>>();
 
-  const [activeLang, setActiveLang] = useState<string>("TR");
+  const [activeLang, setActiveLang] = useState<string>();
   const [isActive, setIsActive] = useState<boolean>(false);
   const [refreshCount, setRefreshCount] = useState<number>(0);
 
@@ -79,7 +79,9 @@ const Home: NextPage = () => {
     getScrollPosition();
     if (!localStorage.getItem("language")) {
       localStorage.setItem("language", "TR");
+      setActiveLang("TR");
     }
+    setActiveLang(localStorage.getItem("language") || "");
   }, []);
 
   return (
