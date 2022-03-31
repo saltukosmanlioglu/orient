@@ -155,7 +155,11 @@ const Home: NextPage = () => {
                           <Product
                             key={productIndex}
                             color={category.color}
-                            href={`/product/${product.id}`}
+                            href={
+                              localStorage.getItem("language") === "TR"
+                                ? `/product/${product.id}`
+                                : `/product/${product.productId}`
+                            }
                             px={24}
                             title={product.title}
                           />
@@ -184,7 +188,11 @@ const Home: NextPage = () => {
                                       ? subCategory.color
                                       : category.color
                                   }
-                                  href={`/product/${product.id}`}
+                                  href={
+                                    localStorage.getItem("language") === "TR"
+                                      ? `/product/${product.id}`
+                                      : `/product/${product.productId}`
+                                  }
                                   px={48}
                                   title={product.title}
                                 />
