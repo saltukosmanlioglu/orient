@@ -77,7 +77,9 @@ const Home: NextPage = () => {
     getLanguageData();
     getSliderData();
     getScrollPosition();
-    localStorage.setItem("language", "TR")
+    if (!localStorage.getItem("language")) {
+      localStorage.setItem("language", "TR");
+    }
   }, []);
 
   return (
