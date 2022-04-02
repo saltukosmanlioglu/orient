@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import HipchatChevronDownIcon from "@atlaskit/icon/glyph/hipchat/chevron-down";
+import React, { useState } from 'react'
+import HipchatChevronDownIcon from '@atlaskit/icon/glyph/hipchat/chevron-down'
 
-import { AccordionProps } from "./types";
-import * as Styled from "./Accordion.styled";
+import { AccordionProps } from './types'
+import * as Styled from './Accordion.styled'
 
 const Accordion: React.FunctionComponent<AccordionProps> = ({
   children,
@@ -12,21 +12,39 @@ const Accordion: React.FunctionComponent<AccordionProps> = ({
   title,
 }) => {
   const [isActive, setIsActive] = useState<boolean>(
-    localStorage.getItem("active-accordion-id") === title ||
+    JSON.parse(
+      sessionStorage.getItem('active-accordion-id-list') || '[]'
+    ).includes(title) ||
       Boolean(
-        subCategoryList?.includes?.(
-          localStorage.getItem("active-accordion-id") || ""
-        )
+        (subCategoryList || []).filter((value) =>
+          JSON.parse(
+            sessionStorage.getItem('active-accordion-id-list') || '[]'
+          ).includes(value)
+        ).length
       )
-  );
+  )
 
   const handleClick = () => {
+    const activeAccordionIdList = JSON.parse(
+      sessionStorage.getItem('active-accordion-id-list') || '[]'
+    )
     if (!isActive) {
-      localStorage.setItem("active-accordion-id", title);
-      sessionStorage.setItem("scroll-position", window.pageYOffset.toString());
+      activeAccordionIdList.push(title)
+      sessionStorage.setItem(
+        'active-accordion-id-list',
+        JSON.stringify(activeAccordionIdList)
+      )
+      sessionStorage.setItem('scroll-position', window.pageYOffset.toString())
+    } else {
+      sessionStorage.setItem(
+        'active-accordion-id-list',
+        JSON.stringify(
+          activeAccordionIdList.filter((value: string) => value !== title)
+        )
+      )
     }
-    setIsActive(!isActive);
-  };
+    setIsActive(!isActive)
+  }
 
   return (
     <React.Fragment>
@@ -44,7 +62,7 @@ const Accordion: React.FunctionComponent<AccordionProps> = ({
       </Styled.Accordion>
       {isActive && <Styled.Detail px={px}>{children}</Styled.Detail>}
     </React.Fragment>
-  );
-};
+  )
+}
 
-export default Accordion;
+export default Accordion
