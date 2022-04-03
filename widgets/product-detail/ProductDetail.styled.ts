@@ -44,13 +44,13 @@ export const Price = styled.p<{ color: string }>`
   }
 `;
 
-export const Bar = styled.div`
+export const Bar = styled.div<{ color: string }>`
   position: absolute;
   right: 0;
   bottom: 0;
   height: 45px;
   width: 1px;
-  background-color: #000;
+  background-color: ${({ color }) => color};
   z-index: 1000;
 `;
 

@@ -35,7 +35,7 @@ const ProductDetail: React.FunctionComponent<ProductDetailProps> = ({
           {isVirgule?.[0]},<span>{isVirgule?.[1]}</span>
           <span> TL</span>{" "}
         </Styled.Price>
-        <Styled.Bar />
+        <Styled.Bar color={color} />
       </Styled.Detail>
     </Styled.ProductDetail>
   );
