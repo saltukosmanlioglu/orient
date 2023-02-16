@@ -210,6 +210,9 @@ const Home: NextPage = () => {
           <Spinner />
         )}
       </Styled.Gutter>
+      <Styled.Service>
+        Fiyatlarımıza servis ücreti dahil değildir.
+      </Styled.Service>
     </Main>
   );
 };
